@@ -13,7 +13,7 @@ Always up-to-date and in development repository :)
   _Click an item, to see stats, config options and installation instructions_
 
 <!-- auto-insert-apps:start -->
-1. <img title="Docker container for managing Nginx proxy hosts with a simple, powerful interface" src='https://raw.githubusercontent.com/mikestraney/portainer-templates/master/Images/proxy_mgr.png](https://avatars.githubusercontent.com/u/88089605?s=200&v=4' width='26' height='26' /> **[Nginx Proxy Manager](https://github.com/NginxProxyManager/nginx-proxy-manager 'Nginx Proxy Manager enables you to easily forward to your websites running at home or otherwise including free SSL without having to know too much about Nginx or Letsencrypt ')**  -- ([there_will_be_some_reference](https://github.com))
+1. <img title="Docker container for managing Nginx proxy hosts with a simple, powerful interface" src='https://raw.githubusercontent.com/mikestraney/portainer-templates/master/Images/proxy_mgr.png' width='26' height='26' /> **[Nginx Proxy Manager](https://github.com/NginxProxyManager/nginx-proxy-manager 'Nginx Proxy Manager enables you to easily forward to your websites running at home or otherwise including free SSL without having to know too much about Nginx or Letsencrypt ')**  -- ([there_will_be_some_reference](https://github.com))
 
 <!-- auto-insert-apps:end -->
 
