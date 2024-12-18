@@ -57,8 +57,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 <!-- License + Copyright -->
 <p  align="center">
-  <i>© <a href="https://aliciasykes.com">Alicia Sykes</a> 2023</i><br>
-  <i>Licensed under <a href="https://gist.github.com/Lissy93/143d2ee01ccc5c052a17">MIT</a></i><br>
-  <a href="https://github.com/lissy93"><img src="https://i.ibb.co/4KtpYxb/octocat-clean-mini.png" /></a><br>
-  <sup>Thanks for visiting :)</sup>
+  <i>© <a href="https://gunk1n.pro">Dima Gunkin</a> 2024</i><br>
+  <i>Licensed under <a href="https://github.com/gunk1n/gn-portainer-teplates/blob/HEAD/LICENSE">MIT</a></i><br>
+  <a href="https://github.com/gunk1n"><img src="[https://i.ibb.co/4KtpYxb/octocat-clean-mini.png](https://i.imgur.com/BtuPfK9.png)" /></a><br>
+  <sup>:)</sup>
 </p>
