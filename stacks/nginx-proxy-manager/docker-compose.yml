@@ -1,0 +1,73 @@
+# 
+#    ┌─────────────────────────────────────────────────────────────────┐
+#    │                                                                 │
+#    │                _   ___                 _                 _      │
+#    │    ___ _ _ ___| |_|_  |  ___   ___ ___| |_ _ _ _ ___ ___| |_    │
+#    │   | . | | |   | '_|_| |_|   |_|   | -_|  _| | | | . |  _| '_|   │
+#    │   |_  |___|_|_|_,_|_____|_|_|_|_|_|___|_| |_____|___|_| |_,_|   │
+#    │   |___|                                                         │
+#    │                                                                 │
+#    └─────────────────────────────────────────────────────────────────┘
+# 
+
+---
+
+services:
+  app:
+    image: jc21/nginx-proxy-manager:${APP_VERSION_TAG:-latest}
+    container_name: app
+    restart: unless-stopped
+    ports:
+      # public http port
+      - '${APP_HTTP_PORTS}'
+      # public https port
+      - '${APP_HTTPS_PORTS}'
+      # web-ui port
+      - '${APP_WEBUI_PORTS}'
+      # stream port
+      - '10901:10901'
+      - '10902:10902'
+      - '10903:10903'
+      - '10904:10904'
+      - '10905:10905'
+      - '10910:10910/tcp'
+      - '10920:10920/udp'
+    environment:
+      DB_MYSQL_HOST: 'db'
+      DB_MYSQL_PORT: '3306'
+      DB_MYSQL_USER: '${DB_USER}'
+      DB_MYSQL_PASSWORD: '${DB_PASSWORD}'
+      DB_MYSQL_NAME: '${DB_NAME}'
+      DISABLE_IPV6: 'true'
+    volumes:
+      - app_data:/data
+      - letsencrypt_data:/etc/letsencrypt
+    depends_on:
+      - db
+    networks:
+      - ${NETWORK_NAME}
+
+  db:
+    image: jc21/mariadb-aria:${DB_VERSION_TAG:-latest}
+    container_name: db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: '${DB_ROOT_PASSWORD}'
+      MYSQL_DATABASE: '${DB_NAME}'
+      MYSQL_USER: '${DB_USER}'
+      MYSQL_PASSWORD: '${DB_PASSWORD}'
+      MARIADB_AUTO_UPGRADE: '1'
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - ${NETWORK_NAME}
+
+volumes:
+  app_data:
+  db_data:
+  letsencrypt_data:
+
+networks:
+  ${NETWORK_NAME}:
+    external: true
+    name: ${NETWORK_NAME}

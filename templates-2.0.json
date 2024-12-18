@@ -1,0 +1,125 @@
+{
+  "version": "2",
+  "templates": [
+    {
+      "type": 3,
+      "title": "Nginx Proxy Manager",
+      "description": "Docker container for managing Nginx proxy hosts with a simple, powerful interface.",
+      "note": "https://github.com/NginxProxyManager/nginx-proxy-manager | def_cred: admin@example.com/changeme",
+      "categories": ["webserver"],
+      "platform": "linux",
+      "logo": "https://nginxproxymanager.com/logo.svg",
+      "repository": {
+        "url": "https://github.com/gunk1n/gn-portainer-teplates",
+        "stackfile": "stacks/nginx-proxy-manager/docker-compose.yml"
+      },
+      "env": [
+        {
+          "name": "APP_VERSION_TAG",
+          "label": "NPM version tag",
+          "description": "Version of Nginx Proxy Manager to use (if empty, use default 'latest')",
+          "default": "latest"
+        },
+        {
+          "name": "DB_VERSION_TAG",
+          "label": "MariaDB version tag",
+          "description": "Version of MariaDB to use (if empty, use default 'latest')",
+          "default": "latest"
+        },
+        {
+          "name": "APP_HHTTP_PORTS",
+          "label": "NPM HHTTP ports",
+          "description": "if empty, use default '80:80'",
+          "default": "80:80"
+        },
+        {
+          "name": "APP_HTTPS_PORTS",
+          "label": "NPM HTTPS ports",
+          "description": "if empty, use default '443:443'",
+          "default": "443:443"
+        },
+        {
+          "name": "APP_WEBUI_PORTS",
+          "label": "NPM WebUI ports",
+          "description": "if empty, use default '81:81'",
+          "default": "81:81"
+        },
+        {
+          "name": "DB_ROOT_PASSWORD",
+          "label": "MariaDB root password",
+          "description": "if empty, use default 'z69qyeS4bRooT'",
+          "default": "z69qyeS4bRooT"
+        },
+        {
+          "name": "DB_NAME",
+          "label": "DB name of Nginx Proxy Manager",
+          "description": "if empty, use default 'app-db'",
+          "default": "app-db"
+        },
+        {
+          "name": "DB_USER",
+          "label": "DB userNginx Proxy Manager",
+          "description": "if empty, use default 'app-db-user'",
+          "default": "app-db-user"
+        },
+        {
+          "name": "DB_PASSWORD",
+          "label": "DB passwordNginx Proxy Manager",
+          "description": "if empty, use default 'qeWpR3yj7UseR'",
+          "default": "qeWpR3yj7UseR"
+        },
+        {
+          "name": "NETWORK_NAME",
+          "label": "Name of the network to which applications are connected",
+          "description": "if empty, use default 'nginx_proxy_network'",
+          "default": "nginx_proxy_network"
+        }
+      ]
+    },
+    {
+      "type": 3,
+      "title": "Vaultwarden (Bitwarden)",
+      "description": "Alternative implementation of the Bitwarden server API in Rust, including the Web Vault.",
+      "note": "https://github.com/dani-garcia/vaultwarden | https://hub.docker.com/r/vaultwarden/server",
+      "categories": ["Passwordserver"],
+      "platform": "linux",
+      "logo": "https://djeqr6to3dedg.cloudfront.net/repo-logos/vaultwarden/server/live/logo-1703429416075.png",
+      "repository": {
+        "url": "https://github.com/gunk1n/gn-portainer-teplates",
+        "stackfile": "stacks/vaultwarden/docker-compose.yml"
+      },
+      "env": [
+        {
+          "name": "VW_VERSION_TAG",
+          "label": "Vaultwarden version tag",
+          "description": "if empty, use default 'latest'",
+          "default": "latest"
+        },
+        {
+          "name": "VW_DOMAIN",
+          "label": "Vaultwarden webui domain",
+          "description": "specify the domain without protocol (if empty, use default 'vw.app.gunk1n.network')",
+          "default": "vw.app.gunk1n.network"
+        },
+        {
+          "name": "VW_PORT",
+          "label": "Vaultwarden webui port",
+          "description": "if empty, use default '8888'",
+          "default": "8888"
+        },
+        {
+          "name": "VW_CONTAINER_PORT",
+          "label": "Vaultwarden webui container port",
+          "description": "if empty, use default '8888'",
+          "default": "8888"
+        },
+        {
+          "name": "NETWORK_NAME",
+          "label": "Name of the network to which applications are connected",
+          "description": "if empty, use default 'nginx_proxy_network'",
+          "default": "nginx_proxy_network"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+# 
+#    ┌─────────────────────────────────────────────────────────────────┐
+#    │                                                                 │
+#    │                _   ___                 _                 _      │
+#    │    ___ _ _ ___| |_|_  |  ___   ___ ___| |_ _ _ _ ___ ___| |_    │
+#    │   | . | | |   | '_|_| |_|   |_|   | -_|  _| | | | . |  _| '_|   │
+#    │   |_  |___|_|_|_,_|_____|_|_|_|_|_|___|_| |_____|___|_| |_,_|   │
+#    │   |___|                                                         │
+#    │                                                                 │
+#    └─────────────────────────────────────────────────────────────────┘
+# 
+
+---
+
+services:
+  vaultwarden:
+    image: vaultwarden/server:${VW_VERSION_TAG}
+    container_name: vaultwarden
+    restart: unless-stopped
+    environment:
+      DOMAIN: "https://${VW_DOMAIN}"
+      ROCKET_PORT: "${VW_CONTAINER_PORT}"
+    volumes:
+      - vw_data:/data/
+    ports:
+      - ${VW_PORT}:${VW_CONTAINER_PORT}
+    networks:
+      - ${NETWORK_NAME} 
+
+volumes:
+  vw_data:
+
+networks:
+  ${NETWORK_NAME}:
+    external: true
+    name: ${NETWORK_NAME}
