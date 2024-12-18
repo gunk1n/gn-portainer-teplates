@@ -2,6 +2,22 @@
 
 Always up-to-date and in development repository :)
 
+---
+
+<details>
+
+  <summary><h2>Apps and Stacks</h2><br><i>↕️ Click to Expand ↕️</i></summary>
+
+  <br>
+  
+  _Click an item, to see stats, config options and installation instructions_
+
+<!-- auto-insert-apps:start -->
+1. <img title="Docker container for managing Nginx proxy hosts with a simple, powerful interface" src='https://raw.githubusercontent.com/mikestraney/portainer-templates/master/Images/proxy_mgr.png](https://avatars.githubusercontent.com/u/88089605?s=200&v=4' width='26' height='26' /> **[Nginx Proxy Manager](https://github.com/NginxProxyManager/nginx-proxy-manager 'Nginx Proxy Manager enables you to easily forward to your websites running at home or otherwise including free SSL without having to know too much about Nginx or Letsencrypt ')**  -- ([there_will_be_some_reference](https://github.com))
+
+<!-- auto-insert-apps:end -->
+
+</details>
 
 ---
 
@@ -9,7 +25,7 @@ Always up-to-date and in development repository :)
 
 > **Note** For licenses for each app listed here, see their websites _(linked to [above](#supported-apps-and-stacks))_.
 
-> _**[gunk1n/gn-portainer-teplates](https://github.com/gunk1n/gn-portainer-teplates)** is licensed under [MIT](https://github.com/gunk1n/gn-portainer-teplates/blob/HEAD/LICENSE) © [Dima Gunkin](https://gunk1n.pro) 2023._<br>
+> _**[gunk1n/gn-portainer-teplates](https://github.com/gunk1n/gn-portainer-teplates)** is licensed under [MIT](https://github.com/gunk1n/gn-portainer-teplates/blob/HEAD/LICENSE) © [Dima Gunkin](https://gunk1n.pro) 2024._<br>
 > <sup align="right">For information, see <a href="https://tldrlegal.com/license/mit-license">TLDR Legal > MIT</a></sup>
 
 <details>
