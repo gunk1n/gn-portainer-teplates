@@ -78,7 +78,7 @@
     },
     {
       "type": 3,
-      "title": "Vaultwarden (Bitwarden)",
+      "title": "Vaultwarden",
       "description": "Alternative implementation of the Bitwarden server API in Rust, including the Web Vault.",
       "note": "https://github.com/dani-garcia/vaultwarden | https://hub.docker.com/r/vaultwarden/server",
       "categories": ["Passwordserver"],
