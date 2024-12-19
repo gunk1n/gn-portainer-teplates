@@ -40,9 +40,8 @@ services:
       DB_MYSQL_NAME: '${DB_NAME}'
       DISABLE_IPV6: 'true'
     volumes:
-      - npm_data:/data
-      - npm_:/data
-      - npm_letsencrypt:/etc/letsencrypt
+      - data:/data
+      - letsencrypt:/etc/letsencrypt
     depends_on:
       - db
     networks:
@@ -59,7 +58,7 @@ services:
       MYSQL_PASSWORD: '${DB_PASSWORD}'
       MARIADB_AUTO_UPGRADE: '1'
     volumes:
-      - npm_db_data:/var/lib/mysql
+      - db:/var/lib/mysql
     networks:
       - '${NETWORK_NAME}'
 

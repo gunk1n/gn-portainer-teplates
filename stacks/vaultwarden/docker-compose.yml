@@ -28,8 +28,7 @@ services:
       - '${NETWORK_NAME}'
 
 volumes:
-  vw_data:
-    name: 'vw_data'
+  data:
 
 networks:
   ${NETWORK_NAME}:
