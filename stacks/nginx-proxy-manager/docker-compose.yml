@@ -44,6 +44,10 @@ services:
       - letsencrypt:/etc/letsencrypt
     depends_on:
       - db
+    healthcheck:
+      test: ["CMD", "/usr/bin/check-health"]
+      interval: 10s
+      timeout: 3s
     networks:
       - '${NETWORK_NAME}'
 
@@ -61,11 +65,6 @@ services:
       - db:/var/lib/mysql
     networks:
       - '${NETWORK_NAME}'
-
-healthcheck:
-  test: ["CMD", "/usr/bin/check-health"]
-  interval: 10s
-  timeout: 3s
 
 volumes:
   data:
