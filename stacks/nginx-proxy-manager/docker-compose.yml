@@ -74,4 +74,3 @@ volumes:
 networks:
   ${NETWORK_NAME}:
     external: true
-    name: ${NETWORK_NAME}
