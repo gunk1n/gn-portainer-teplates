@@ -59,6 +59,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 <p  align="center">
   <i>© <a href="https://gunk1n.pro">Dima Gunkin</a> 2024</i><br>
   <i>Licensed under <a href="https://github.com/gunk1n/gn-portainer-teplates/blob/HEAD/LICENSE">MIT</a></i><br>
-  <a href="https://github.com/gunk1n"><img src="[https://i.ibb.co/4KtpYxb/octocat-clean-mini.png](https://i.imgur.com/BtuPfK9.png)" /></a><br>
+  <a href="https://github.com/gunk1n"><img src="https://i.imgur.com/BtuPfK9.png" /></a><br>
   <sup>:)</sup>
 </p>
