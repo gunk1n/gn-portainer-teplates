@@ -44,8 +44,8 @@ services:
       - letsencrypt_data:/etc/letsencrypt
     depends_on:
       - db
-#     networks:
-#       - ${NETWORK_NAME}
+    networks:
+      - '${NETWORK_NAME}'
 
   db:
     image: jc21/mariadb-aria:${DB_VERSION_TAG:-latest}
@@ -59,8 +59,8 @@ services:
       MARIADB_AUTO_UPGRADE: '1'
     volumes:
       - db_data:/var/lib/mysql
-#     networks:
-#       - ${NETWORK_NAME}
+    networks:
+      - '${NETWORK_NAME}'
 
 volumes:
   app_data:

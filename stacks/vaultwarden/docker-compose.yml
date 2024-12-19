@@ -24,8 +24,8 @@ services:
       - vw_data:/data/
     ports:
       - ${VW_PORT}:${VW_CONTAINER_PORT}
-#     networks:
-#       - ${NETWORK_NAME}
+    networks:
+      - '${NETWORK_NAME}'
 
 volumes:
   vw_data:
