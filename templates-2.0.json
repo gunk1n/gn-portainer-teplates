@@ -27,8 +27,8 @@
           "default": "latest"
         },
         {
-          "name": "APP_HHTTP_PORTS",
-          "label": "NPM HHTTP ports",
+          "name": "APP_HTTP_PORTS",
+          "label": "NPM HTTP ports",
           "description": "if empty, use default '80:80'",
           "default": "80:80"
         },
