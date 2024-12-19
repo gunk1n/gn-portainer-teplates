@@ -49,7 +49,7 @@ services:
       interval: 10s
       timeout: 3s
     networks:
-      - '${NETWORK_NAME}'
+      - ${NETWORK_NAME}
 
   db:
     image: jc21/mariadb-aria:${DB_VERSION_TAG:-latest}
@@ -64,7 +64,7 @@ services:
     volumes:
       - db:/var/lib/mysql
     networks:
-      - '${NETWORK_NAME}'
+      - ${NETWORK_NAME}
 
 volumes:
   data:
@@ -74,4 +74,4 @@ volumes:
 networks:
   ${NETWORK_NAME}:
     external: true
-    name: '${NETWORK_NAME}'
+    name: ${NETWORK_NAME}
