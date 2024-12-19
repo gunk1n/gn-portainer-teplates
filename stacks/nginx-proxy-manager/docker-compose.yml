@@ -46,8 +46,6 @@ services:
       test: ["CMD", "/usr/bin/check-health"]
       interval: 10s
       timeout: 3s
-#     networks:
-#       - ${NETWORK_NAME}
     depends_on:
       - db
 
@@ -63,17 +61,11 @@ services:
       MARIADB_AUTO_UPGRADE: '1'
     volumes:
       - db:/var/lib/mysql
-#     networks:
-#       - ${NETWORK_NAME}
 
 volumes:
   data:
   letsencrypt:
   db:
-
-# networks:
-#   ${NETWORK_NAME}:
-#     external: true
 
 networks:
   default:

@@ -21,18 +21,12 @@ services:
       DOMAIN: "https://${VW_DOMAIN}"
       ROCKET_PORT: "${VW_CONTAINER_PORT}"
     volumes:
-      - vw_data:/data/
+      - data:/data/
     ports:
       - ${VW_PORT}:${VW_CONTAINER_PORT}
-#     networks:
-#       - ${NETWORK_NAME}
 
 volumes:
   data:
-
-# networks:
-#   ${NETWORK_NAME}:
-#     external: true
 
 networks:
   default:
