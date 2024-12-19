@@ -42,14 +42,14 @@ services:
     volumes:
       - data:/data
       - letsencrypt:/etc/letsencrypt
-    depends_on:
-      - db
     healthcheck:
       test: ["CMD", "/usr/bin/check-health"]
       interval: 10s
       timeout: 3s
-    networks:
-      - ${NETWORK_NAME}
+#     networks:
+#       - ${NETWORK_NAME}
+    depends_on:
+      - db
 
   db:
     image: jc21/mariadb-aria:${DB_VERSION_TAG:-latest}
@@ -63,14 +63,19 @@ services:
       MARIADB_AUTO_UPGRADE: '1'
     volumes:
       - db:/var/lib/mysql
-    networks:
-      - ${NETWORK_NAME}
+#     networks:
+#       - ${NETWORK_NAME}
 
 volumes:
   data:
   letsencrypt:
   db:
 
+# networks:
+#   ${NETWORK_NAME}:
+#     external: true
+
 networks:
-  ${NETWORK_NAME}:
+  default:
     external: true
+    name: ${NETWORK_NAME}

@@ -24,12 +24,17 @@ services:
       - vw_data:/data/
     ports:
       - ${VW_PORT}:${VW_CONTAINER_PORT}
-    networks:
-      - ${NETWORK_NAME}
+#     networks:
+#       - ${NETWORK_NAME}
 
 volumes:
   data:
 
+# networks:
+#   ${NETWORK_NAME}:
+#     external: true
+
 networks:
-  ${NETWORK_NAME}:
+  default:
     external: true
+    name: ${NETWORK_NAME}
