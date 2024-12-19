@@ -71,8 +71,8 @@
         {
           "name": "NETWORK_NAME",
           "label": "Name of the network to which applications are connected",
-          "description": "if empty, use default 'nginx_proxy_network'",
-          "default": "nginx_proxy_network"
+          "description": "if empty, use default 'nginx_proxy'",
+          "default": "nginx_proxy"
         }
       ]
     },
@@ -116,8 +116,8 @@
         {
           "name": "NETWORK_NAME",
           "label": "Name of the network to which applications are connected",
-          "description": "if empty, use default 'nginx_proxy_network'",
-          "default": "nginx_proxy_network"
+          "description": "if empty, use default 'nginx_proxy'",
+          "default": "nginx_proxy"
         }
       ]
     }
