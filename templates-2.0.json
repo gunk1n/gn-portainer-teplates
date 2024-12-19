@@ -27,22 +27,22 @@
           "default": "latest"
         },
         {
-          "name": "APP_HTTP_PORTS",
-          "label": "NPM HTTP ports",
-          "description": "if empty, use default '80:80'",
-          "default": "80:80"
+          "name": "APP_HTTP_PORT",
+          "label": "NPM HTTP port",
+          "description": "if empty, use default '80'",
+          "default": "80"
         },
         {
-          "name": "APP_HTTPS_PORTS",
-          "label": "NPM HTTPS ports",
-          "description": "if empty, use default '443:443'",
-          "default": "443:443"
+          "name": "APP_HTTPS_PORT",
+          "label": "NPM HTTPS port",
+          "description": "if empty, use default '443'",
+          "default": "443"
         },
         {
-          "name": "APP_WEBUI_PORTS",
-          "label": "NPM WebUI ports",
-          "description": "if empty, use default '81:81'",
-          "default": "81:81"
+          "name": "APP_WEBUI_PORT",
+          "label": "NPM WebUI port",
+          "description": "if empty, use default '81'",
+          "default": "81"
         },
         {
           "name": "DB_ROOT_PASSWORD",

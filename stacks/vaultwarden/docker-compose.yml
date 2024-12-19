@@ -24,8 +24,8 @@ services:
       - vw_data:/data/
     ports:
       - ${VW_PORT}:${VW_CONTAINER_PORT}
-    networks:
-      - ${NETWORK_NAME} 
+#     networks:
+#       - ${NETWORK_NAME}
 
 volumes:
   vw_data:
@@ -33,4 +33,4 @@ volumes:
 networks:
   ${NETWORK_NAME}:
     external: true
-    name: ${NETWORK_NAME}
+    name: '${NETWORK_NAME}'
