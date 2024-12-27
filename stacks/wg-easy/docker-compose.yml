@@ -1,0 +1,93 @@
+# 
+#    ┌─────────────────────────────────────────────────────────────────┐
+#    │                                                                 │
+#    │                _   ___                 _                 _      │
+#    │    ___ _ _ ___| |_|_  |  ___   ___ ___| |_ _ _ _ ___ ___| |_    │
+#    │   | . | | |   | '_|_| |_|   |_|   | -_|  _| | | | . |  _| '_|   │
+#    │   |_  |___|_|_|_,_|_____|_|_|_|_|_|___|_| |_____|___|_| |_,_|   │
+#    │   |___|                                                         │
+#    │                                                                 │
+#    └─────────────────────────────────────────────────────────────────┘
+# 
+
+---
+
+services:
+  wg-easy:
+    image: ghcr.io/wg-easy/wg-easy:${WGE_VERSION_TAG}
+    container_name: wg-easy
+    restart: unless-stopped
+    environment:
+      #   #   #   #   #   #   #   #   #   #   #   #   #   #   #   #   #   #
+      #  VISIT FOR DETAILS - https://github.com/wg-easy/wg-easy#options   #
+      #   #   #   #   #   #   #   #   #   #   #   #   #   #   #   #   #   #
+      # 🚨 Your host (public hostname of your VPN server)
+      - WG_HOST=${WGE_WG_HOST}
+      # 🚨 WEB-UI password:
+      # docker run --rm -it ghcr.io/wg-easy/wg-easy wgpw 'qоwдeтrчtпyш'
+      # PASSWORD_HASH='$$2a$$12$$Z3QiQxPQiwdpEkHl18B.RueV/IetSQIBWcShNhnCq.c1qxRpyEXea'
+      - PASSWORD_HASH=${WGE_PASSWORD_HASH}
+      # Language (en, ua, ru, tr, no, pl, fr, de, ca, es, ko, vi, nl, is, pt, chs, cht, it, th, hi, ja, si):
+      - LANG=${WGE_LANG}
+      # IP address web UI binds to
+      - WEBUI_HOST=${WGE_WEBUI_HOST}
+      # TCP port for Web UI
+      - PORT=${WGE_UI_PORT}
+      # The public UDP port of your VPN server. WireGuard will listen on that (othwise default) inside the Docker container
+      - WG_PORT=${WGE_UDP_PORT}
+      # The public UDP port of your VPN server
+      - WG_CONFIG_PORT=${WGE_UDP_PORT}
+      # Clients IP address range
+      - WG_DEFAULT_ADDRESS=${WGE_WG_DEFAULT_ADDRESS}
+      # DNS server clients will use
+      - WG_DEFAULT_DNS=${WGE_WG_DEFAULT_DNS}
+      # Ethernet device the wireguard traffic should be forwarded through
+      - WG_DEVICE=${WGE_WG_DEVICE}
+      # Allowed IPs clients will use
+      - WG_MTU=${WGE_WG_MTU}
+      # Allowed IPs clients will use
+      - WG_ALLOWED_IPS=${WGE_WG_ALLOWED_IPS}
+      # Value in seconds to keep the "connection" open (if this value is 0, then connections won't be kept alive)
+      - WG_PERSISTENT_KEEPALIVE=${WGE_WG_PERSISTENT_KEEPALIVE}
+      # See config.js for the default value
+      # - WG_PRE_UP=echo "Pre Up" > /etc/wireguard/pre-up.txt
+      # - WG_POST_UP=echo "Post Up" > /etc/wireguard/post-up.txt
+      # - WG_PRE_DOWN=echo "Pre Down" > /etc/wireguard/pre-down.txt
+      # - WG_POST_DOWN=echo "Post Down" > /etc/wireguard/post-down.txt
+      # Enable display and generation of short one time download links (expire after 5 minutes)
+      - WG_ENABLE_ONE_TIME_LINKS=${WGE_WG_ENABLE_ONE_TIME_LINKS}
+      # The maximum age of Web UI sessions in minutes (0 means that the session will exist until the browser is closed)
+      - MAX_AGE=${WGE_MAX_AGE}
+      # Enable UI sort clients by name
+      - UI_ENABLE_SORT_CLIENTS=${WGE_UI_ENABLE_SORT_CLIENTS}
+      # Enable expire time for clients
+      - WG_ENABLE_EXPIRES_TIME=${WGE_WG_ENABLE_EXPIRES_TIME}
+      # Enable detailed RX / TX client stats in Web UI
+      - UI_TRAFFIC_STATS=${WGE_UI_TRAFFIC_STATS}
+      # Chart web-ui (0 Charts disabled, 1 # Line chart, 2 # Area chart, 3 # Bar chart)
+      - UI_CHART_TYPE=${WGE_UI_CHART_TYPE}
+      # ⚠️ Prometheus metrics
+      # docker run --rm -it ghcr.io/wg-easy/wg-easy wgpw 'швпдот'
+      # PASSWORD_HASH='$$2b$$10$$EUpw8ld7iIvIOwuagkcpEucDrWajST5D5TNa2SMy3dTcwIfHZQe9K'
+      - ENABLE_PROMETHEUS_METRICS=${WGE_ENABLE_PROMETHEUS_METRICS}
+      - PROMETHEUS_METRICS_PASSWORD=${WGE_PROMETHEUS_METRICS_PASSWORD}
+    volumes:
+      - etc-data:/etc/wireguard
+    ports:
+      - ${WGE_UDP_PORT}:${WGE_UDP_PORT}/udp
+      - ${WGE_UI_PORT}:${WGE_UI_PORT}/tcp
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+      # - NET_RAW # uncomment if using Podman
+    sysctls:
+      - net.ipv4.ip_forward=${WGE_SYSCTLS_NET_IPV4_IP_FORWARD}
+      - net.ipv4.conf.all.src_valid_mark=${WGE_SYSCTLS_NET_IPV4_SRC_VALID_MARK}
+
+volumes:
+  etc-data:
+
+networks:
+  default:
+    external: true
+    name: ${NETWORK_NAME}
