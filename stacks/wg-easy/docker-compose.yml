@@ -13,9 +13,9 @@
 ---
 
 services:
-  wg-easy:
+  wireguard-easy:
     image: ghcr.io/wg-easy/wg-easy:${WGE_VERSION_TAG}
-    container_name: wg-easy
+    container_name: wireguard-easy
     restart: unless-stopped
     environment:
       #   #   #   #   #   #   #   #   #   #   #   #   #   #   #   #   #   #
