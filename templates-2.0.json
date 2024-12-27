@@ -124,7 +124,7 @@
     {
       "type": 3,
       "title": "WG-Easy",
-      "description": "",
+      "description": "The easiest way to run WireGuard VPN + Web-based Admin UI.",
       "note": "https://github.com/wg-easy/wg-easy",
       "categories": ["VPNserver"],
       "platform": "linux",
