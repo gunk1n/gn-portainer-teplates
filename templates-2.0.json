@@ -270,13 +270,13 @@
           "name": "WGE_SYSCTLS_NET_IPV4_IP_FORWARD",
           "label": "WGE_SYSCTLS_NET_IPV4_IP_FORWARD",
           "description": "WGE_SYSCTLS_NET_IPV4_IP_FORWARD",
-          "default": "true"
+          "default": "1"
         },
         {
           "name": "WGE_SYSCTLS_NET_IPV4_SRC_VALID_MARK",
           "label": "WGE_SYSCTLS_NET_IPV4_SRC_VALID_MARK",
           "description": "WGE_SYSCTLS_NET_IPV4_SRC_VALID_MARK",
-          "default": "true"
+          "default": "1"
         },
         {
           "name": "NETWORK_NAME",
