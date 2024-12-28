@@ -72,7 +72,7 @@ services:
       - ENABLE_PROMETHEUS_METRICS=${WGE_ENABLE_PROMETHEUS_METRICS}
       - PROMETHEUS_METRICS_PASSWORD=${WGE_PROMETHEUS_METRICS_PASSWORD}
     volumes:
-      - etc-data:/etc/wireguard
+      - etc:/etc/wireguard
     ports:
       - ${WGE_UDP_PORT}:${WGE_UDP_PORT}/udp
       - ${WGE_UI_PORT}:${WGE_UI_PORT}/tcp
@@ -85,7 +85,7 @@ services:
       - net.ipv4.conf.all.src_valid_mark=${WGE_SYSCTLS_NET_IPV4_SRC_VALID_MARK}
 
 volumes:
-  etc-data:
+  etc:
 
 networks:
   default:
