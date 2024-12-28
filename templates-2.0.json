@@ -123,7 +123,7 @@
     },
     {
       "type": 3,
-      "title": "WG-Easy",
+      "title": "WG-Easy (stack)",
       "description": "The easiest way to run WireGuard VPN + Web-based Admin UI.",
       "note": "https://github.com/wg-easy/wg-easy",
       "categories": ["VPN Server"],
@@ -131,7 +131,7 @@
       "logo": "https://avatars.githubusercontent.com/u/105704026?s=48&v=4",
       "repository": {
         "url": "https://github.com/gunk1n/gn-portainer-teplates",
-        "stackfile": "stacks/wg-easy/docker-compose.yml"
+        "stackfile": "stacks/wireguard-easy/docker-compose.yml"
       },
       "env": [
         {
@@ -286,6 +286,55 @@
         }
       ]
     },
+{
+  "type": 1,
+  "title": "WG-Easy (container)",
+  "description": "The easiest way to run WireGuard VPN + Web-based Admin UI.",
+  "note": "https://github.com/wg-easy/wg-easy",
+  "categories": [
+    "VPN Server"
+  ],
+  "platform": "linux",
+  "logo": "https://avatars.githubusercontent.com/u/105704026?s=48&v=4",
+  "network": "nginx_proxy_manager",
+  "ports": [
+    "8853:53/udp",
+    "8891:9150/tcp"
+  ],
+  "restart_policy": "unless-stopped",
+  "env": [
+    {
+      "name": "MYSQL_ROOT_PASSWORD",
+      "label": "Root password",
+      "description": "Password used by the root user."
+    },
+    {
+      "name": "ENV_VAR_WITH_DEFAULT_VALUE",
+      "default": "default_value",
+      "preset": true
+    },
+    {
+      "name": "ENV_VAR_WITH_SELECT_VALUE",
+      "label": "An environment variable",
+      "description": "Some environment variable.",
+      "select": [
+        {
+          "text": "Yes, I agree",
+          "value": "Y",
+          "default": true
+        },
+        {
+          "text": "No, I disagree",
+          "value": "N"
+        },
+        {
+          "text": "Maybe",
+          "value": "YN"
+        }
+      ]
+    }
+  ]
+},
     {
       "type": 1,
       "title": "Tor SOCKS5 proxy + DNS",
