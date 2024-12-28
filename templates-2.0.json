@@ -297,6 +297,22 @@
       "image": "peterdavehello/tor-socks-proxy:latest",
       "ports": ["8853:53/udp", "8891:9150/tcp"],
       "restart_policy": "unless-stopped"
+    },
+    {
+      "type": 1,
+      "title": "Watchtower",
+      "description": "A process for automating Docker container base image updates.",
+      "note":"https://github.com/containrrr/watchtower | https://containrrr.dev/watchtower/",
+      "categories": ["Tools"],
+      "platform": "linux",
+      "logo": "https://avatars.githubusercontent.com/u/49166261?s=48&v=4",
+      "image": "containrrr/watchtower:latest",
+     "volumes": [
+        {
+          "container": "/var/run/docker.sock",
+          "bind": "/var/run/docker.sock"
+        }
+      ]
     }
   ]
 }
