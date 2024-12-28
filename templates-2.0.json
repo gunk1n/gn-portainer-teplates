@@ -295,7 +295,7 @@
       "platform": "linux",
       "logo": "https://camo.githubusercontent.com/4c0184e8de794273e438bbd7803d49029a458f551711908606aab53ebb416e9a/68747470733a2f2f75706c6f61642e77696b696d656469612e6f72672f77696b6970656469612f636f6d6d6f6e732f382f38662f546f725f70726f6a6563745f6c6f676f5f68712e706e67",
       "image": "peterdavehello/tor-socks-proxy:latest",
-      "ports": ["8853:53/udp", "9111:9150/tcp"],
+      "ports": ["8853:53/udp", "8891:9150/tcp"],
       "restart_policy": "unless-stopped"
     }
   ]
