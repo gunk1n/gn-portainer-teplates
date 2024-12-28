@@ -307,7 +307,8 @@
       "platform": "linux",
       "logo": "https://avatars.githubusercontent.com/u/49166261?s=48&v=4",
       "image": "containrrr/watchtower:latest",
-     "volumes": [
+      "network": "none",
+      "volumes": [
         {
           "container": "/var/run/docker.sock",
           "bind": "/var/run/docker.sock"
