@@ -168,13 +168,13 @@
           "name": "WGE_UI_PORT",
           "label": "WGE_UI_PORT",
           "description": "WGE_UI_PORT",
-          "default": "55055"
+          "default": "55066"
         },
         {
           "name": "WGE_UDP_PORT",
           "label": "WGE_UDP_PORT",
           "description": "WGE_UDP_PORT",
-          "default": "55088"
+          "default": "55099"
         },
         {
           "name": "WGE_WG_DEFAULT_ADDRESS",
