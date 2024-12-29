@@ -1,0 +1,43 @@
+#
+#    ┌─────────────────────────────────────────────────────────────────┐
+#    │                                                                 │
+#    │                _   ___                 _                 _      │
+#    │    ___ _ _ ___| |_|_  |  ___   ___ ___| |_ _ _ _ ___ ___| |_    │
+#    │   | . | | |   | '_|_| |_|   |_|   | -_|  _| | | | . |  _| '_|   │
+#    │   |_  |___|_|_|_,_|_____|_|_|_|_|_|___|_| |_____|___|_| |_,_|   │
+#    │   |___|                                                         │
+#    │                                                                 │
+#    └─────────────────────────────────────────────────────────────────┘
+#
+
+---
+
+services:
+  tabby-web:
+    image: ghcr.io/gunk1n/tabby-web:${TW_VERSION_TAG:-latest}
+    container_name: tabby-web
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - ${TW_HOST_PORT}:9090
+    environment:
+      - DATABASE_URL=mysql://root:${TW_MYSQL_ROOT_PASSWORD} @db/${TW_MARIADB_DATABASE}
+      - PORT=9090
+      - DEBUG=${TW_DEBUG}
+      - DOCKERIZE_ARGS="${TW_DOCKERIZE_ARGS}"
+    # - APP_DIST_STORAGE="file:///app-dist"
+
+  db:
+    image: mariadb: ${MARIADB_VERSION_TAG:-10.7.1}
+    restart: always
+    environment:
+      MARIADB_DATABASE: ${TW_MARIADB_DATABASE}
+      MARIADB_USER: ${TW_MARIADB_USER}
+      MARIADB_PASSWORD: ${TW_MARIADB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${TW_MYSQL_ROOT_PASSWORD}
+
+networks:
+  default:
+    external: true
+    name: ${NETWORK_NAME}
