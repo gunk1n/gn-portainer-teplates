@@ -301,7 +301,7 @@
       "platform": "linux",
       "logo": "https://avatars.githubusercontent.com/u/49166261?s=48&v=4",
       "image": "containrrr/watchtower:latest",
-      "network": "none", nginx_proxy_manager
+      "network": "none",
       "volumes": [
         {
           "container": "/var/run/docker.sock",
@@ -321,7 +321,7 @@
       "image": "qmcgaw/stackedit:latest",
       "ports": ["9010:9010/tcp"],
       "restart_policy": "always",
-      "network": "nginx_proxy_manager",
+      "network": "bridge",
       "env": [
         {
           "name": "LISTENING_PORT",
