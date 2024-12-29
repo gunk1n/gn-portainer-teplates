@@ -308,7 +308,6 @@
           "bind": "/var/run/docker.sock"
         }
       ]
-    }
     },
     {
       "type": 1,
