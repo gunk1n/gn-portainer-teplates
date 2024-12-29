@@ -321,7 +321,7 @@
       "image": "qmcgaw/stackedit:latest",
       "ports": ["9010:9010/tcp"],
       "restart_policy": "always",
-      "network": "bridge",
+      "network": "nginx_proxy_manager",
       "env": [
         {
           "name": "LISTENING_PORT",
