@@ -392,7 +392,7 @@
       "description": "Tabby Web - an SSH/Telnet/Serial client in your browser.",
       "note": "https://github.com/gunk1n/tabby-web",
       "categories": [
-        "SSH'
+        "SSH"
       ],
       "platform": "linux",
       "logo": "https://tabby.sh/32bf32ff6c87e8d18932.svg",
