@@ -301,11 +301,69 @@
       "platform": "linux",
       "logo": "https://avatars.githubusercontent.com/u/49166261?s=48&v=4",
       "image": "containrrr/watchtower:latest",
-      "network": "none",
+      "network": "none", nginx_proxy_manager
       "volumes": [
         {
           "container": "/var/run/docker.sock",
           "bind": "/var/run/docker.sock"
+        }
+      ]
+    }
+    },
+    {
+      "type": 1,
+      "title": "Stackedit",
+      "description": "StackEdit 5.14.5 Server in a light Docker container",
+      "note":" https://github.com/qdm12/stackedit-docker  |  https://hub.docker.com/r/qmcgaw/stackedit  |  https://github.com/benweet/stackedit",
+      "categories": ["Markdown","Text Editor"],
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/benweet/stackedit/refs/heads/master/static/landing/favicon.ico",
+      "image": "qmcgaw/stackedit:latest",
+      "ports": ["9010:9010/tcp"],
+      "restart_policy": "always",
+      "network": "nginx_proxy_manager",
+      "env": [
+        {
+          "name": "LISTENING_PORT",
+          "label": "LISTENING_PORT",
+          "description": "Internal server listening port",
+          "default": "9010"
+        },
+        {
+          "name": "ROOT_URL",
+          "label": "ROOT_URL",
+          "description": "Root URL to use, useful when used with a reverse proxy",
+          "default": "/"
+        },
+        {
+          "name": "NODE_ENV",
+          "label": "NODE_ENV",
+          "description": "Sets production behavior for stackedit",
+          "default": "production"
+        },
+        {
+          "name": "DROPBOX_APP_KEY",
+          "label": "DROPBOX_APP_KEY",
+          "description": "https://www.dropbox.com/developers/apps  |  https://www.dropbox.com/developers/apps",
+          "default": ""
+        },
+        {
+          "name": "DROPBOX_APP_KEY_FULL",
+          "label": "DROPBOX_APP_KEY_FULL",
+          "description": "https://www.dropbox.com/developers/apps  |  https://www.dropbox.com/developers/apps",
+          "default": ""
+        },
+        {
+          "name": "GITHUB_CLIENT_ID",
+          "label": "GITHUB_CLIENT_ID",
+          "description": "https://github.com/settings/developers",
+          "default": ""
+        },
+        {
+          "name": "GITHUB_CLIENT_SECRET",
+          "label": "GITHUB_CLIENT_SECRET",
+          "description": "https://github.com/settings/developers",
+          "default": ""
         }
       ]
     }
