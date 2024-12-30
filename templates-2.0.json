@@ -435,13 +435,13 @@
           "name": "TW_MARIADB_PASSWORD",
           "label": "TW_MARIADB_PASSWORD",
           "description": "if empty, use default 'tabby-pwd'",
-          "default": "tabby-pwd'"
+          "default": "tabby-pwd"
         },
         {
           "name": "TW_MYSQL_ROOT_PASSWORD",
           "label": "TW_MYSQL_ROOT_PASSWORD",
           "description": "if empty, use default 'tabby-pwd'",
-          "default": "tabby-pwd'"
+          "default": "tabby-pwd"
         },
         {
           "name": "TW_DEBUG",
