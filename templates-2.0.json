@@ -450,12 +450,6 @@
           "default": "False"
         },
         {
-          "name": "TW_DOCKERIZE_ARGS",
-          "label": "TW_DOCKERIZE_ARGS",
-          "description": "if empty, use default '-wait tcp://db:3306 -timeout 60s'",
-          "default": "-wait tcp://db:3306 -timeout 60s"
-        },
-        {
           "name": "NETWORK_NAME",
           "label": "Name of the network to which applications are connected",
           "description": "if empty, use default 'nginx_proxy_manager'",

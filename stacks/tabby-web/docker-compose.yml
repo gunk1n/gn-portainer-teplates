@@ -22,10 +22,10 @@ services:
     ports:
       - ${TW_HOST_PORT}:9090
     environment:
-      - DATABASE_URL=mysql://root:${TW_MYSQL_ROOT_PASSWORD} @db/${TW_MARIADB_DATABASE}
+      - DATABASE_URL=mysql://root:tabby-pwd@db/tabby
       - PORT=9090
       - DEBUG=${TW_DEBUG}
-      - DOCKERIZE_ARGS="${TW_DOCKERIZE_ARGS}"
+      - DOCKERIZE_ARGS="-wait tcp://db:3306 -timeout 60s""
     # - APP_DIST_STORAGE="file:///app-dist"
 
   db:
