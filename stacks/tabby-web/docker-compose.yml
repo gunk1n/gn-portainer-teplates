@@ -29,7 +29,7 @@ services:
     # - APP_DIST_STORAGE="file:///app-dist"
 
   db:
-    image: mariadb: ${MARIADB_VERSION_TAG:-10.7.1}
+    image: mariadb: ${MARIADB_VERSION_TAG}
     restart: always
     environment:
       MARIADB_DATABASE: ${TW_MARIADB_DATABASE}
