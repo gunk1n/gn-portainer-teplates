@@ -70,44 +70,6 @@
       "maintainer": "https://github.com/gunk1n/gn-portainer-teplates"
     },
     {
-      "type": 1,
-      "title": "NodeJS",
-      "description": "JavaScript-based platform for server-side and networking applications",
-      "categories": [
-        "Development"
-      ],
-      "platform": "linux",
-      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/node.png",
-      "image": "node:latest",
-      "interactive": true,
-      "command": "/bin/bash",
-      "maintainer": "https://github.com/gunk1n/gn-portainer-teplates"
-    },
-    {
-      "type": 1,
-      "title": "Nginx",
-      "description": "High performance web server",
-      "categories": [
-        "Webserver"
-      ],
-      "platform": "linux",
-      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/nginx.png",
-      "image": "nginx:latest",
-      "ports": [
-        "80/tcp",
-        "443/tcp"
-      ],
-      "volumes": [
-        {
-          "container": "/etc/nginx"
-        },
-        {
-          "container": "/usr/share/nginx/html"
-        }
-      ],
-      "maintainer": "https://github.com/gunk1n/gn-portainer-teplates"
-    },
-    {
       "type": 3,
       "title": "Nginx Proxy Manager",
       "description": "Docker container for managing Nginx proxy hosts with a simple, powerful interface.",
