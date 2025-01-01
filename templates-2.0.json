@@ -432,65 +432,6 @@
       "maintainer": "https://github.com/gunk1n/gn-portainer-teplates"
     },
     {
-      "type": 1,
-      "title": "Kali-linux",
-      "name": "Kali-linux",
-      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/kali-linux/config<br></p>",
-      "description": "[Kali-linux](https://github.com/linuxserver/docker-kali-linux) - is an Advanced Penetration Testing Linux distribution used for Penetration Testing, Ethical Hacking and network security assessments. KALI LINUX \u2122 is a trademark of OffSec.",
-      "platform": "linux",
-      "restart_policy": "unless-stopped",
-      "categories": ["Linux"],
-      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/kali-logo.png",
-      "image": "linuxserver/kali-linux:latest",
-      "env": [
-        {
-          "name": "PUID",
-          "label": "PUID",
-          "default": "1024",
-          "description": "for UserID"
-        },
-        {
-          "name": "PGID",
-          "label": "PGID",
-          "default": "100",
-          "description": "for GroupID"
-        },
-        {
-          "name": "TZ",
-          "label": "TZ",
-          "default": "Europe/Amsterdam",
-          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
-        },
-        {
-          "name": "SUBFOLDER",
-          "label": "SUBFOLDER",
-          "default": "/",
-          "description": "Specify a subfolder to use with reverse proxies, IE `/subfolder/`"
-        },
-        {
-          "name": "TITLE",
-          "label": "TITLE",
-          "default": "Kali Linux",
-          "description": "String which will be used as page/tab title in the web browser."
-        }
-      ],
-      "ports": [
-        "3000:3000/tcp",
-        "3001:3001/tcp"
-      ],
-      "volumes": [
-        {
-          "container": "/config",
-          "bind": "/volume1/docker/kali-linux/config"
-        },
-        {
-          "container": "/var/run/docker.sock",
-          "bind": "/var/run/docker.sock"
-        }
-      ],
-      "maintainer": "https://github.com/gunk1n/gn-portainer-teplates"
-    },
-    {
       "type": 3,
       "title": "Tabby-web",
       "description": "Tabby Web - an SSH/Telnet/Serial client in your browser.",
