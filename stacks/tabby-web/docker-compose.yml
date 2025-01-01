@@ -15,13 +15,13 @@
 services:
   t-web:
 #    image: ghcr.io/eugeny/tabby-web:${TW_VERSION_TAG}
-    image: tabby-web-tabby:latest
+    image: ghcr.io/eugeny/tabby-web:latest
     container_name: t-web
     restart: always
     depends_on:
       - t-db
     ports:
-      - ${TW_HOST_PORT}:9090
+      - 9090:9080
     environment:
 #      - DATABASE_URL=mysql://root:tabby-pwd@db/tabby
 #      - PORT=9090
@@ -29,9 +29,9 @@ services:
 #      - DOCKERIZE_ARGS="-wait tcp://db:3306 -timeout 60s"
 #      - APP_DIST_STORAGE="file:///app-dist"
       - DATABASE_URL=mysql://root:123@t-db/tabby
-      - PORT=9090
+      - PORT=9080
       - DEBUG=False
-      - DOCKERIZE_ARGS="-wait tcp://t-db:3306 -timeout 60s"
+      - DOCKERIZE_ARGS=-wait tcp://t-db:3306 -timeout 60s
 
   t-db:
 #    image: mariadb: ${MARIADB_VERSION_TAG}
@@ -47,6 +47,15 @@ services:
       MARIADB_USER: user
       MARIADB_PASSWORD: 123
       MYSQL_ROOT_PASSWORD: 123
+
+  t-cgw:
+    image: ghcr.io/eugeny/tabby-connection-gateway:latest
+    container_name: t-cgw
+    environment:
+      - TABBY_AUTH_TOKEN=tabby-token123
+    ports:
+      - 9000:9000
+    command: --token-auth --host 0.0.0.0
 
 networks:
   default:
