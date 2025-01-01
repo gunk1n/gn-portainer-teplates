@@ -7,7 +7,8 @@
       "description": "Docker image registry",
       "note": "https://github.com/distribution/distribution  |  https://github.com/distribution/distribution/tree/main/tests",
       "categories": [
-        "Docker", "Registry"
+        "Docker",
+        "Registry"
       ],
       "platform": "linux",
       "logo": "https://avatars.githubusercontent.com/u/78096003?s=200&v=4",
@@ -28,7 +29,8 @@
       "note": "https://github.com/distribution/distribution  |  https://github.com/distribution/distribution/tree/main/tests",
       "description": "Docker image registry configured as a DockerHub pull through cache",
       "categories": [
-        "Docker", "Registry"
+        "Docker",
+        "Registry"
       ],
       "platform": "linux",
       "logo": "https://avatars.githubusercontent.com/u/78096003?s=200&v=4",
@@ -54,9 +56,11 @@
       "type": 1,
       "title": "Ubuntu 24.04",
       "description": "Debian-based Linux operating system",
-      "note": "https://hub.docker.com/_/ubuntu,
+      "note": "https://hub.docker.com/_/ubuntu",
       "categories": [
-        "OS", "Ubuntu", "Linux"
+        "OS",
+        "Ubuntu",
+        "Linux"
       ],
       "platform": "linux",
       "logo": "https://djeqr6to3dedg.cloudfront.net/repo-logos/library/ubuntu/live/logo-1720462303144.png",
