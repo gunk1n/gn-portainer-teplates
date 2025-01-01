@@ -2,6 +2,108 @@
   "version": "2",
   "templates": [
     {
+      "type": 1,
+      "title": "Docker Registry",
+      "description": "Docker image registry",
+      "note": "https://github.com/distribution/distribution  |  https://github.com/distribution/distribution/tree/main/tests",
+      "categories": [
+        "Docker", "Registry"
+      ],
+      "platform": "linux",
+      "logo": "https://avatars.githubusercontent.com/u/78096003?s=200&v=4",
+      "image": "registry:latest",
+      "ports": [
+        "5000/tcp"
+      ],
+      "volumes": [
+        {
+          "container": "/var/lib/registry"
+        }
+      ],
+      "maintainer": "https://github.com/gunk1n/gn-portainer-teplates"
+    },
+    {
+      "type": 1,
+      "title": "Docker Registry (cache)",
+      "note": "https://github.com/distribution/distribution  |  https://github.com/distribution/distribution/tree/main/tests",
+      "description": "Docker image registry configured as a DockerHub pull through cache",
+      "categories": [
+        "Docker", "Registry"
+      ],
+      "platform": "linux",
+      "logo": "https://avatars.githubusercontent.com/u/78096003?s=200&v=4",
+      "image": "registry:latest",
+      "ports": [
+        "5000/tcp"
+      ],
+      "volumes": [
+        {
+          "container": "/var/lib/registry"
+        }
+      ],
+      "env": [
+        {
+          "name": "REGISTRY_PROXY_REMOTEURL",
+          "default": "https://registry-1.docker.io",
+          "preset": true
+        }
+      ],
+      "maintainer": "https://github.com/gunk1n/gn-portainer-teplates"
+    },
+    {
+      "type": 1,
+      "title": "Ubuntu 24.04",
+      "description": "Debian-based Linux operating system",
+      "note": "https://hub.docker.com/_/ubuntu,
+      "categories": [
+        "OS", "Ubuntu", "Linux"
+      ],
+      "platform": "linux",
+      "logo": "https://djeqr6to3dedg.cloudfront.net/repo-logos/library/ubuntu/live/logo-1720462303144.png",
+      "image": "ubuntu:24.04",
+      "interactive": true,
+      "command": "/bin/bash",
+      "maintainer": "https://github.com/gunk1n/gn-portainer-teplates"
+    },
+    {
+      "type": 1,
+      "title": "NodeJS",
+      "description": "JavaScript-based platform for server-side and networking applications",
+      "categories": [
+        "Development"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/node.png",
+      "image": "node:latest",
+      "interactive": true,
+      "command": "/bin/bash",
+      "maintainer": "https://github.com/gunk1n/gn-portainer-teplates"
+    },
+    {
+      "type": 1,
+      "title": "Nginx",
+      "description": "High performance web server",
+      "categories": [
+        "Webserver"
+      ],
+      "platform": "linux",
+      "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/nginx.png",
+      "image": "nginx:latest",
+      "ports": [
+        "80/tcp",
+        "443/tcp"
+      ],
+      "volumes": [
+        {
+          "container": "/etc/nginx"
+        },
+        {
+          "container": "/usr/share/nginx/html"
+        }
+      ],
+      "maintainer": "https://github.com/gunk1n/gn-portainer-teplates"
+    },
+    {
       "type": 3,
       "title": "Nginx Proxy Manager",
       "description": "Docker container for managing Nginx proxy hosts with a simple, powerful interface.",
@@ -77,7 +179,8 @@
           "description": "if empty, use default 'nginx_proxy_manager'",
           "default": "nginx_proxy_manager"
         }
-      ]
+      ],
+      "maintainer": "https://github.com/gunk1n/gn-portainer-teplates"
     },
     {
       "type": 3,
@@ -125,7 +228,8 @@
           "description": "if empty, use default 'nginx_proxy_manager'",
           "default": "nginx_proxy_manager"
         }
-      ]
+      ],
+      "maintainer": "https://github.com/gunk1n/gn-portainer-teplates"
     },
     {
       "type": 3,
@@ -286,7 +390,8 @@
           "description": "if empty, use default 'nginx_proxy_manager'",
           "default": "nginx_proxy_manager"
         }
-      ]
+      ],
+      "maintainer": "https://github.com/gunk1n/gn-portainer-teplates"
     },
     {
       "type": 1,
@@ -303,7 +408,8 @@
         "8853:53/udp",
         "8891:9150/tcp"
       ],
-      "restart_policy": "unless-stopped"
+      "restart_policy": "unless-stopped",
+      "maintainer": "https://github.com/gunk1n/gn-portainer-teplates"
     },
     {
       "type": 1,
@@ -322,8 +428,10 @@
           "container": "/var/run/docker.sock",
           "bind": "/var/run/docker.sock"
         }
-      ]
-    }    {
+      ],
+      "maintainer": "https://github.com/gunk1n/gn-portainer-teplates"
+    },
+    {
       "type": 1,
       "title": "Kali-linux",
       "name": "Kali-linux",
@@ -379,7 +487,8 @@
           "container": "/var/run/docker.sock",
           "bind": "/var/run/docker.sock"
         }
-      ]
+      ],
+      "maintainer": "https://github.com/gunk1n/gn-portainer-teplates"
     },
     {
       "type": 3,
@@ -402,7 +511,8 @@
           "description": "if empty, use default 'nginx_proxy_manager'",
           "default": "nginx_proxy_manager"
         }
-      ]
+      ],
+      "maintainer": "https://github.com/gunk1n/gn-portainer-teplates"
     }
   ]
 }
