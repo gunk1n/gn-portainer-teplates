@@ -402,6 +402,54 @@
       },
       "env": [
         {
+          "name": "TW_VERSION_TAG",
+          "label": "Tabby-web version tag",
+          "description": "if empty, use default 'latest'",
+          "default": "latest"
+        },
+        {
+          "name": "MARIADB_VERSION_TAG",
+          "label": "MariaDB version tag",
+          "description": "if empty, use default '10.7.1'",
+          "default": "10.7.1"
+        },
+        {
+          "name": "TW_HOST_PORT",
+          "label": "TW_HOST_PORT",
+          "description": "if empty, use default '9090'",
+          "default": "9090"
+        },
+        {
+          "name": "TW_MARIADB_DATABASE",
+          "label": "TW_MARIADB_DATABASE",
+          "description": "if empty, use default 'tabby'",
+          "default": "tabby"
+        },
+        {
+          "name": "TW_MARIADB_USER",
+          "label": "TW_MARIADB_USER",
+          "description": "if empty, use default 'tabby-user'",
+          "default": "tabby-user"
+        },
+        {
+          "name": "TW_MARIADB_PASSWORD",
+          "label": "TW_MARIADB_PASSWORD",
+          "description": "if empty, use default 'tabby-pwd'",
+          "default": "tabby-pwd"
+        },
+        {
+          "name": "TW_MYSQL_ROOT_PASSWORD",
+          "label": "TW_MYSQL_ROOT_PASSWORD",
+          "description": "if empty, use default 'tabby-pwd'",
+          "default": "tabby-pwd"
+        },
+        {
+          "name": "TW_DEBUG",
+          "label": "TW_DEBUG",
+          "description": "if empty, use default 'False'",
+          "default": "False"
+        },
+        {
           "name": "NETWORK_NAME",
           "label": "Name of the network to which applications are connected",
           "description": "if empty, use default 'nginx_proxy_manager'",

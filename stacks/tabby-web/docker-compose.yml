@@ -13,29 +13,40 @@
 ---
 
 services:
-  tabby-web:
-    image: ghcr.io/eugeny/tabby-web:${TW_VERSION_TAG}
-    container_name: tabby-web
+  t-web:
+#    image: ghcr.io/eugeny/tabby-web:${TW_VERSION_TAG}
+    image: tabby-web-tabby:latest
+    container_name: t-web
     restart: always
     depends_on:
-      - db
+      - t-db
     ports:
       - ${TW_HOST_PORT}:9090
     environment:
-      - DATABASE_URL=mysql://root:tabby-pwd@db/tabby
+#      - DATABASE_URL=mysql://root:tabby-pwd@db/tabby
+#      - PORT=9090
+#      - DEBUG=${TW_DEBUG}
+#      - DOCKERIZE_ARGS="-wait tcp://db:3306 -timeout 60s"
+#      - APP_DIST_STORAGE="file:///app-dist"
+      - DATABASE_URL=mysql://root:123@t-db/tabby
       - PORT=9090
-      - DEBUG=${TW_DEBUG}
-      - DOCKERIZE_ARGS="-wait tcp://db:3306 -timeout 60s"
-    # - APP_DIST_STORAGE="file:///app-dist"
+      - DEBUG=False
+      - DOCKERIZE_ARGS="-wait tcp://t-db:3306 -timeout 60s"
 
-  db:
-    image: mariadb: ${MARIADB_VERSION_TAG}
+  t-db:
+#    image: mariadb: ${MARIADB_VERSION_TAG}
+    image: mariadb:10.7.1
+    container_name: t-db
     restart: always
     environment:
-      MARIADB_DATABASE: ${TW_MARIADB_DATABASE}
-      MARIADB_USER: ${TW_MARIADB_USER}
-      MARIADB_PASSWORD: ${TW_MARIADB_PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${TW_MYSQL_ROOT_PASSWORD}
+#      MARIADB_DATABASE: ${TW_MARIADB_DATABASE}
+#      MARIADB_USER: ${TW_MARIADB_USER}
+#      MARIADB_PASSWORD: ${TW_MARIADB_PASSWORD}
+#      MYSQL_ROOT_PASSWORD: ${TW_MYSQL_ROOT_PASSWORD}
+      MARIADB_DATABASE: tabby
+      MARIADB_USER: user
+      MARIADB_PASSWORD: 123
+      MYSQL_ROOT_PASSWORD: 123
 
 networks:
   default:
