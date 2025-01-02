@@ -31,7 +31,7 @@ services:
 #      - APP_DIST_STORAGE="file:///app-dist"
 
   t-db:
-    image: mariadb: ${MARIADB_VERSION_TAG}
+    image: mariadb:${MARIADB_VERSION_TAG}
     container_name: t-db
     restart: always
     environment:
