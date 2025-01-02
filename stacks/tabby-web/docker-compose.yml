@@ -14,48 +14,40 @@
 
 services:
   t-web:
-#    image: ghcr.io/eugeny/tabby-web:${TW_VERSION_TAG}
-    image: ghcr.io/eugeny/tabby-web:latest
+    image: ghcr.io/eugeny/tabby-web:${TW_VERSION_TAG}
     container_name: t-web
     restart: always
     depends_on:
       - t-db
     ports:
-      - 9090:9080
+      - ${TW_PORT}:${TW_PORT}
     environment:
-#      - DATABASE_URL=mysql://root:tabby-pwd@db/tabby
-#      - PORT=9090
-#      - DEBUG=${TW_DEBUG}
-#      - DOCKERIZE_ARGS="-wait tcp://db:3306 -timeout 60s"
-#      - APP_DIST_STORAGE="file:///app-dist"
-      - DATABASE_URL=mysql://root:123@t-db/tabby
-      - PORT=9080
-      - DEBUG=False
+      - DATABASE_URL=mysql://root:${TW_MARIADB_PASSWORD}@t-db/${TW_MARIADB_DATABASE}
+      - PORT=${TW_PORT}
+      - DEBUG=${TW_DEBUG}
       - DOCKERIZE_ARGS=-wait tcp://t-db:3306 -timeout 60s
+      - SOCIAL_AUTH_GITHUB_KEY=${TW_SOCIAL_AUTH_GITHUB_KEY}
+      - SOCIAL_AUTH_GITHUB_SECRET=${TW_SOCIAL_AUTH_GITHUB_SECRET}
+#      - APP_DIST_STORAGE="file:///app-dist"
 
   t-db:
-#    image: mariadb: ${MARIADB_VERSION_TAG}
-    image: mariadb:10.7.1
+    image: mariadb: ${MARIADB_VERSION_TAG}
     container_name: t-db
     restart: always
     environment:
-#      MARIADB_DATABASE: ${TW_MARIADB_DATABASE}
-#      MARIADB_USER: ${TW_MARIADB_USER}
-#      MARIADB_PASSWORD: ${TW_MARIADB_PASSWORD}
-#      MYSQL_ROOT_PASSWORD: ${TW_MYSQL_ROOT_PASSWORD}
-      MARIADB_DATABASE: tabby
-      MARIADB_USER: user
-      MARIADB_PASSWORD: 123
-      MYSQL_ROOT_PASSWORD: 123
+      MARIADB_DATABASE: ${TW_MARIADB_DATABASE}
+      MARIADB_USER: ${TW_MARIADB_USER}
+      MARIADB_PASSWORD: ${TW_MARIADB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${TW_MYSQL_ROOT_PASSWORD}
 
   t-cgw:
-    image: ghcr.io/eugeny/tabby-connection-gateway:latest
+    image: ghcr.io/eugeny/tabby-connection-gateway:${TWCG_VERSION_TAG}
     container_name: t-cgw
     environment:
-      - TABBY_AUTH_TOKEN=tabby-token123
+      - TABBY_AUTH_TOKEN=${TWCG_AUTH_TOKEN}
     ports:
-      - 9000:9000
-    command: --token-auth --host 0.0.0.0
+      - ${TWCG_PORT}:${TWCG_PORT}
+    command: --token-auth --host ${TWCG_HOST_IP}
 
 networks:
   default:
