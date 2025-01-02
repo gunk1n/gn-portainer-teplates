@@ -473,14 +473,14 @@
           "default": "False"
         },
         {
-          "name": "TW_SOCIAL_AUTH_GITHUB_SECRET",
-          "label": "TW_SOCIAL_AUTH_GITHUB_SECRET",
+          "name": "TW_SOCIAL_AUTH_GITHUB_KEY",
+          "label": "TW_SOCIAL_AUTH_GITHUB_KEY",
           "description": "default 'empty' (go to https://github.com/settings/applications)",
           "default": ""
         },
         {
-          "name": "TW_SOCIAL_AUTH_GITHUB_KEY",
-          "label": "TW_SOCIAL_AUTH_GITHUB_KEY",
+          "name": "TW_SOCIAL_AUTH_GITHUB_SECRET",
+          "label": "TW_SOCIAL_AUTH_GITHUB_SECRET",
           "description": "default 'empty' (go to https://github.com/settings/applications)",
           "default": ""
         },
