@@ -42,6 +42,8 @@ services:
       MARIADB_USER: ${TW_MARIADB_USER}
       MARIADB_PASSWORD: ${TW_MARIADB_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${TW_MYSQL_ROOT_PASSWORD}
+    volumes:
+      - db:/var/lib/mysql
 
   t-cgw:
     image: ghcr.io/eugeny/tabby-connection-gateway:${TWCG_VERSION_TAG}
@@ -51,6 +53,9 @@ services:
     ports:
       - ${TWCG_PORT}:${TWCG_PORT}
     command: --token-auth --host ${TWCG_HOST_IP}
+
+volumes:
+  db:
 
 networks:
   default:
