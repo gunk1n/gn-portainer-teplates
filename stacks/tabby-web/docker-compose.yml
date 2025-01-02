@@ -32,6 +32,8 @@ services:
       - SOCIAL_AUTH_GITHUB_KEY=${TW_SOCIAL_AUTH_GITHUB_KEY}
       - SOCIAL_AUTH_GITHUB_SECRET=${TW_SOCIAL_AUTH_GITHUB_SECRET}
       - APP_DIST_STORAGE=file:///app-dist
+    volumes:
+      - app-dist:/app-dist
 
   t-db:
     image: mariadb:${MARIADB_VERSION_TAG}
@@ -56,6 +58,7 @@ services:
 
 volumes:
   db:
+  app-dist:
 
 networks:
   default:
