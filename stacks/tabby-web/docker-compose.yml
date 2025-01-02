@@ -13,31 +13,31 @@
 ---
 
 services:
-  t-web:
+  tabby-web:
     image: ghcr.io/eugeny/tabby-web:${TW_VERSION_TAG}
-    container_name: t-web
+    container_name: tabby-web
     restart: always
     user: ${TW_PUID}:${TW_PGID}
     depends_on:
-      - t-db
+      - tabby-db
     ports:
       - ${TW_PORT}:${TW_PORT}
     environment:
       - PUID=${TW_PUID}
       - PGID=${TW_PGID}
-      - DATABASE_URL=mysql://root:${TW_MARIADB_PASSWORD}@t-db/${TW_MARIADB_DATABASE}
+      - DATABASE_URL=mysql://root:${TW_MARIADB_PASSWORD}@tabby-db/${TW_MARIADB_DATABASE}
       - PORT=${TW_PORT}
       - DEBUG=${TW_DEBUG}
-      - DOCKERIZE_ARGS=-wait tcp://t-db:3306 -timeout 60s
+      - DOCKERIZE_ARGS=-wait tcp://tabby-db:3306 -timeout 60s
       - SOCIAL_AUTH_GITHUB_KEY=${TW_SOCIAL_AUTH_GITHUB_KEY}
       - SOCIAL_AUTH_GITHUB_SECRET=${TW_SOCIAL_AUTH_GITHUB_SECRET}
       - APP_DIST_STORAGE=file:///app-dist
     volumes:
       - app-dist:/app-dist
 
-  t-db:
+  tabby-db:
     image: mariadb:${MARIADB_VERSION_TAG}
-    container_name: t-db
+    container_name: tabby-db
     restart: always
     environment:
       MARIADB_DATABASE: ${TW_MARIADB_DATABASE}
@@ -46,15 +46,18 @@ services:
       MYSQL_ROOT_PASSWORD: ${TW_MYSQL_ROOT_PASSWORD}
     volumes:
       - db:/var/lib/mysql
+      - app-dist:/app-dist
 
-  t-cgw:
+  tabby-connection-gateway:
     image: ghcr.io/eugeny/tabby-connection-gateway:${TWCG_VERSION_TAG}
-    container_name: t-cgw
+    container_name: tabby-connection-gateway
     environment:
       - TABBY_AUTH_TOKEN=${TWCG_AUTH_TOKEN}
     ports:
       - ${TWCG_PORT}:${TWCG_PORT}
     command: --token-auth --host ${TWCG_HOST_IP}
+    volumes:
+      - app-dist:/app-dist
 
 volumes:
   db:
