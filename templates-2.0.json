@@ -419,6 +419,18 @@
           "default": "latest"
         },
         {
+          "name": "TW_PUID",
+          "label": "TW_PUID",
+          "description": "if empty, use default '1000'",
+          "default": "1000"
+        },
+        {
+          "name": "TW_PGID",
+          "label": "TW_PGID",
+          "description": "if empty, use default '1000'",
+          "default": "1000"
+        },
+        {
           "name": "MARIADB_VERSION_TAG",
           "label": "MariaDB version tag",
           "description": "if empty, use default '10.7.1'",

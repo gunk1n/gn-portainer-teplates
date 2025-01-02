@@ -17,11 +17,14 @@ services:
     image: ghcr.io/eugeny/tabby-web:${TW_VERSION_TAG}
     container_name: t-web
     restart: always
+    user: ${TW_PUID}:${TW_PGID}
     depends_on:
       - t-db
     ports:
       - ${TW_PORT}:${TW_PORT}
     environment:
+      - PUID=${TW_PUID}
+      - PGID=${TW_PGID}
       - DATABASE_URL=mysql://root:${TW_MARIADB_PASSWORD}@t-db/${TW_MARIADB_DATABASE}
       - PORT=${TW_PORT}
       - DEBUG=${TW_DEBUG}
