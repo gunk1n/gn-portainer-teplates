@@ -360,6 +360,90 @@
       "maintainer": "https://github.com/gunk1n/gn-portainer-teplates"
     },
     {
+      "type": 3,
+      "title": "WGDashboard",
+      "description": "Simple dashboard for WireGuard VPN written in Python & Vue.js.",
+      "note": "https://github.com/donaldzou/WGDashboard",
+      "categories": [
+        "VPN Server"
+      ],
+      "platform": "linux",
+      "logo": "https://github.com/donaldzou/WGDashboard/raw/main/src/static/app/public/img/logo.png",
+      "repository": {
+        "url": "https://github.com/gunk1n/gn-portainer-teplates",
+        "stackfile": "stacks/wgdashboard/docker-compose.yml"
+      },
+      "env": [
+        {
+          "name": "WGD_VERSION_TAG",
+          "label": "WGD_VERSION_TAG",
+          "description": "if empty, use default 'latest'",
+          "default": "latest"
+        },
+        {
+          "name": "WGD_UI_PORT",
+          "label": "WGD_UI_PORT",
+          "description": "WGD_UI_PORT",
+          "default": "10086"
+        },
+        {
+          "name": "WGD_UDP_PORT",
+          "label": "WGD_UDP_PORT",
+          "description": "WGD_UDP_PORT",
+          "default": "51820"
+        },
+        {
+          "name": "WGD_TZ",
+          "label": "WGD_TZ",
+          "description": "Sets the timezone of the Docker container. This is to timesync the container to any other processes which would need it. [Europe/Amsterdam]",
+          "default": "Europe/Moscow"
+        },
+        {
+          "name": "WGD_GLOBAL_DNS",
+          "label": "WGD_GLOBAL_DNS",
+          "description": "Set the default DNS given to clients once they connect to the WireGuard tunnel, and for new peers, set to Cloudflare DNS for reliability. [1.1.1.1]",
+          "default": "1.1.1.1,1.0.0.1"
+        },
+        {
+          "name": "WGD_ENABLE",
+          "label": "WGD_ENABLE",
+          "description": "Enables or disables the starting of the WireGuard interface on container 'boot-up'. [none][wg0,wg2,wg13]",
+          "default": ""
+        },
+        {
+          "name": "WGD_ISOLATE",
+          "label": "WGD_ISOLATE",
+          "description": "The Wireguard interface itself IS able to reach the peers (Done through the iptables package). [none][wg1,wg0]",
+          "default": ""
+        },
+        {
+          "name": "WGD_PUBLIC_IP",
+          "label": "WGD_PUBLIC_IP",
+          "description": "To reach your VPN from outside your own network, you need WG-Dashboard to know what your public IP-address is, otherwise it will generate faulty config files for clients. This happends because it is inside a Docker/Kubernetes container. In or outside of NAT is not relevant as long as the given IP-address is reachable from the internet or the target network. [default uses the return of curl ifconfig.me]",
+          "default": "45.154.2.90"
+        },
+        {
+          "name": "WGD_SYSCTLS_NET_IPV4_IP_FORWARD",
+          "label": "WGD_SYSCTLS_NET_IPV4_IP_FORWARD",
+          "description": "WGD_SYSCTLS_NET_IPV4_IP_FORWARD",
+          "default": "1"
+        },
+        {
+          "name": "WGD_SYSCTLS_NET_IPV4_SRC_VALID_MARK",
+          "label": "WGD_SYSCTLS_NET_IPV4_SRC_VALID_MARK",
+          "description": "WGD_SYSCTLS_NET_IPV4_SRC_VALID_MARK",
+          "default": "1"
+        },
+        {
+          "name": "NETWORK_NAME",
+          "label": "Name of the network to which applications are connected",
+          "description": "if empty, use default 'nginx_proxy_manager'",
+          "default": "nginx_proxy_manager"
+        }
+      ],
+      "maintainer": "https://github.com/gunk1n/gn-portainer-teplates"
+    },
+    {
       "type": 1,
       "title": "Tor SOCKS5 proxy + DNS",
       "description": "🐳 Tiny Docker image (🤏 10MB) as 🧅 Tor SOCKS5 proxy 🛡",

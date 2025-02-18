@@ -1,0 +1,48 @@
+# 
+#    ┌─────────────────────────────────────────────────────────────────┐
+#    │                                                                 │
+#    │                _   ___                 _                 _      │
+#    │    ___ _ _ ___| |_|_  |  ___   ___ ___| |_ _ _ _ ___ ___| |_    │
+#    │   | . | | |   | '_|_| |_|   |_|   | -_|  _| | | | . |  _| '_|   │
+#    │   |_  |___|_|_|_,_|_____|_|_|_|_|_|___|_| |_____|___|_| |_,_|   │
+#    │   |___|                                                         │
+#    │                                                                 │
+#    └─────────────────────────────────────────────────────────────────┘
+# 
+# https://github.com/donaldzou/WGDashboard/tree/main/docker
+# 
+
+---
+
+services:
+  wgdashboard:
+    image: donaldzou/wgdashboard:${WGD_VERSION_TAG}
+    container_name: wgdashboard
+    restart: unless-stopped
+    environment:
+      - TZ=${WGD_TZ}
+      - GLOBAL_DNS=${WGD_GLOBAL_DNS}
+      - ENABLE=${WGD_ENABLE}
+      - ISOLATE=${WGD_ISOLATE}
+      - PUBLIC_IP=${WGD_PUBLIC_IP}
+    ports:
+      - ${WGD_UI_PORT}:${WGD_UI_PORT}/tcp
+      - ${WGD_UDP_PORT}:${WGD_UDP_PORT}/udp
+    volumes:
+      - config_wgd:/etc/wireguard
+      - data_wgd:/data
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    sysctls:
+      - net.ipv4.ip_forward=${WGD_SYSCTLS_NET_IPV4_IP_FORWARD}
+      - net.ipv4.conf.all.src_valid_mark=${WGD_SYSCTLS_NET_IPV4_SRC_VALID_MARK}
+
+volumes:
+  config_wgd:
+  data_wgd:
+
+networks:
+  default:
+    external: true
+    name: ${NETWORK_NAME}
