@@ -420,7 +420,7 @@
           "name": "WGD_ENABLE",
           "label": "WGD_ENABLE",
           "description": "Enables or disables the starting of the WireGuard interface on container 'boot-up'. [none][wg0,wg2,wg13]",
-          "default": ""
+          "default": "wgmgmt0"
         },
         {
           "name": "WGD_ISOLATE",
