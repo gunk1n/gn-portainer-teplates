@@ -26,8 +26,8 @@ services:
       - ISOLATE=${WGD_ISOLATE}
       - PUBLIC_IP=${WGD_PUBLIC_IP}
     ports:
-      - ${WGD_UI_PORT}:${WGD_UI_PORT}/tcp
-      - ${WGD_UDP_PORT}:${WGD_UDP_PORT}/udp
+      - ${WGD_UI_PORT}:${WGD_UI_PORT_CONTAINER}/tcp
+      - ${WGD_UDP_PORT}:${WGD_UDP_PORT_CONTAINER}/udp
     volumes:
       - config_wgd:/etc/wireguard
       - data_wgd:/data

@@ -384,12 +384,24 @@
           "name": "WGD_UI_PORT",
           "label": "WGD_UI_PORT",
           "description": "WGD_UI_PORT",
+          "default": "00000"
+        },
+        {
+          "name": "WGD_UI_PORT_CONTAINER",
+          "label": "WGD_UI_PORT_CONTAINER",
+          "description": "WGD_UI_PORT_CONTAINER",
           "default": "10086"
         },
         {
           "name": "WGD_UDP_PORT",
           "label": "WGD_UDP_PORT",
           "description": "WGD_UDP_PORT",
+          "default": "00000"
+        },
+        {
+          "name": "WGD_UDP_PORT_CONTAINER",
+          "label": "WGD_UDP_PORT_CONTAINER",
+          "description": "WGD_UDP_PORT_CONTAINER",
           "default": "51820"
         },
         {
