@@ -31,6 +31,7 @@ services:
     volumes:
       - config_wgd:/etc/wireguard
       - data_wgd:/data
+      - scripts_wgd:/scripts
     cap_add:
       - NET_ADMIN
       - SYS_MODULE
@@ -41,6 +42,7 @@ services:
 volumes:
   config_wgd:
   data_wgd:
+  scripts_wgd:
 
 networks:
   default:
