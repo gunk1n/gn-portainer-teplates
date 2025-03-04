@@ -632,7 +632,7 @@
           "name": "SEMAPHORE_VERSION_TAG",
           "label": "SemaphoreUI version tag",
           "description": "...",
-          "default": "v.2.12.9"
+          "default": "v2.12.9"
         },
         {
           "name": "SEMAPHORE_DB_DIALECT",
