@@ -612,6 +612,84 @@
         }
       ],
       "maintainer": "https://github.com/gunk1n/gn-portainer-teplates"
+    },
+    {
+      "type": 3,
+      "title": "SemaphoreUI",
+      "description": "Modern UI and powerful API for Ansible, Terraform, OpenTofu, PowerShell and other DevOps tools.",
+      "note": "https://github.com/semaphoreui/semaphore | https://www.semaphoreui.ru/install/docker/2_12/",
+      "categories": [
+        "Ansible"
+      ],
+      "platform": "linux",
+      "logo": "https://avatars.githubusercontent.com/u/98574287?s=48&v=4",
+      "repository": {
+        "url": "https://github.com/gunk1n/gn-portainer-teplates",
+        "stackfile": "stacks/semaphore/docker-compose.yml"
+      },
+      "env": [
+        {
+          "name": "SEMAPHORE_VERSION_TAG",
+          "label": "SemaphoreUI version tag",
+          "description": "...",
+          "default": "v.2.12.9"
+        },
+        {
+          "name": "SEMAPHORE_DB_DIALECT",
+          "label": "SemaphoreUI db type",
+          "description": "...",
+          "default": "bolt"
+        },
+        {
+          "name": "SEMAPHORE_HOST_PORT",
+          "label": "SemaphoreUI host port",
+          "description": "default '3000'",
+          "default": "3333"
+        },
+        {
+          "name": "SEMAPHORE_CONTAINER_PORT",
+          "label": "SemaphoreUI container port",
+          "description": "default '3000'",
+          "default": "3333"
+        },
+        {
+          "name": "SEMAPHORE_ADMIN",
+          "label": "SemaphoreUI Admin login",
+          "description": "",
+          "default": ""
+        },
+		{
+          "name": "SEMAPHORE_ADMIN_NAME",
+          "label": "SemaphoreUI Admin name",
+          "description": "...",
+          "default": ""
+        },
+		{
+          "name": "SEMAPHORE_ADMIN_PASSWORD",
+          "label": "SemaphoreUI Admin password",
+          "description": "...",
+          "default": ""
+        },
+		{
+          "name": "SEMAPHORE_ADMIN_EMAIL",
+          "label": "SemaphoreUI Admin mail",
+          "description": "...",
+          "default": ""
+        },
+		{
+          "name": "ANSIBLE_HOST_KEY_CHECKING",
+          "label": "ANSIBLE_HOST_KEY_CHECKING",
+          "description": "Avoid host key checking by the tools Ansible uses to connect to the host.",
+          "default": "True"
+        },
+        {
+          "name": "NETWORK_NAME",
+          "label": "Name of the network to which applications are connected",
+          "description": "if empty, use default 'nginx_proxy_manager'",
+          "default": "nginx_proxy_manager"
+        }
+      ],
+      "maintainer": "https://github.com/gunk1n/gn-portainer-teplates"
     }
   ]
 }

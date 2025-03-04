@@ -1,0 +1,38 @@
+# 
+# ┌──────────────────────────────────────────────────────┐
+# │                                                      │
+# │                        gntwrk                        │
+# │                                                      │
+# └──────────────────────────────────────────────────────┘
+# 
+
+---
+
+services:
+  semaphore:
+    image: semaphoreui/semaphore:${SEMAPHORE_VERSION_TAG}
+    container_name: semaphore
+    environment:
+      SEMAPHORE_DB_DIALECT: ${SEMAPHORE_DB_DIALECT}
+      SEMAPHORE_ADMIN: ${SEMAPHORE_ADMIN}
+      SEMAPHORE_ADMIN_PASSWORD: ${SEMAPHORE_ADMIN_PASSWORD}
+      SEMAPHORE_ADMIN_NAME: ${SEMAPHORE_ADMIN_NAME}
+      SEMAPHORE_ADMIN_EMAIL: ${SEMAPHORE_ADMIN_EMAIL}
+      SEMAPHORE_PORT: ${SEMAPHORE_CONTAINER_PORT}
+      ANSIBLE_HOST_KEY_CHECKING: ${SEMAPHORE_ANSIBLE_HOST_KEY_CHECKING} #True
+    ports:
+      - ${SEMAPHORE_HOST_PORT}:${SEMAPHORE_CONTAINER_PORT}
+    volumes:
+      - sa_data:/var/lib/semaphore
+      - sa_config:/etc/semaphore
+      - sa_tmp:/tmp/semaphore
+
+volumes:
+    sa_data:
+    sa_config:
+    sa_tmp:
+
+networks:
+  default:
+    external: true
+    name: ${NETWORK_NAME}
