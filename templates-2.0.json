@@ -690,6 +690,72 @@
         }
       ],
       "maintainer": "https://github.com/gunk1n/gn-portainer-teplates"
+    },
+    {
+      "type": 3,
+      "title": "n8n",
+      "description": "Example of self-hosting n8n in various environments like docker, kubernetes, etc.",
+      "note": "https://github.com/n8n-io/n8n-hosting/tree/main/docker-compose/withPostgresAndWorker | https://docs.n8n.io/hosting/installation/docker/
+      "categories": [
+        "Ansible"
+      ],
+      "platform": "linux",
+      "logo": "https://avatars.githubusercontent.com/u/45487711?s=48&v=4",
+      "repository": {
+        "url": "https://github.com/gunk1n/gn-portainer-teplates",
+        "stackfile": "stacks/n8n/docker-compose.yml"
+      },
+      "env": [
+        {
+          "name": "N8N_POSTGRES_USER",
+          "label": "N8N_POSTGRES_USER",
+          "description": "...",
+          "default": ""
+        },
+        {
+          "name": "N8N_POSTGRES_PASSWORD",
+          "label": "N8N_POSTGRES_PASSWORD",
+          "description": "..",
+          "default": ""
+        },
+        {
+          "name": "N8N_POSTGRES_PASSWORD",
+          "label": "N8N_POSTGRES_PASSWORD",
+          "description": "...",
+          "default": ""
+        },
+        {
+          "name": "N8N_POSTGRES_NON_ROOT_USER",
+          "label": "N8N_POSTGRES_NON_ROOT_USER",
+          "description": "...",
+          "default": ""
+        },
+        {
+          "name": "N8N_POSTGRES_NON_ROOT_PASSWORD",
+          "label": "N8N_POSTGRES_NON_ROOT_PASSWORD",
+          "description": "...",
+          "default": ""
+        },
+        {
+          "name": "N8N_ENCRYPTION_KEY",
+          "label": "n8n",
+          "description": "...",
+          "default": ""
+        },
+        {
+          "name": "N8N_PORT",
+          "label": "n8n",
+          "description": "...",
+          "default": "5678"
+        },
+        {
+          "name": "NETWORK_NAME",
+          "label": "Name of the network to which applications are connected",
+          "description": "if empty, use default 'nginx_proxy_manager'",
+          "default": "nginx_proxy_manager"
+        }
+      ],
+      "maintainer": "https://github.com/gunk1n/gn-portainer-teplates"
     }
   ]
 }
