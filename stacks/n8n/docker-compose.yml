@@ -9,9 +9,9 @@
 ---
 
 volumes:
-  n8n_db_storage:
+  db_storage:
   n8n_storage:
-  n8n_redis_storage:
+  redis_storage:
 
 networks:
   default:
