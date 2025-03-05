@@ -695,7 +695,7 @@
       "type": 3,
       "title": "n8n",
       "description": "Example of self-hosting n8n in various environments like docker, kubernetes, etc.",
-      "note": "https://github.com/n8n-io/n8n-hosting/tree/main/docker-compose/withPostgresAndWorker | https://docs.n8n.io/hosting/installation/docker/
+      "note": "https://github.com/n8n-io/n8n-hosting/tree/main/docker-compose/withPostgresAndWorker | https://docs.n8n.io/hosting/installation/docker/",
       "categories": [
         "Ansible"
       ],
