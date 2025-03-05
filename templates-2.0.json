@@ -738,13 +738,13 @@
         },
         {
           "name": "N8N_ENCRYPTION_KEY",
-          "label": "n8n",
+          "label": "N8N_ENCRYPTION_KEY",
           "description": "...",
           "default": ""
         },
         {
           "name": "N8N_PORT",
-          "label": "n8n",
+          "label": "N8N_PORT",
           "description": "...",
           "default": "5678"
         },
