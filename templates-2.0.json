@@ -710,7 +710,7 @@
           "name": "N8N_POSTGRES_USER",
           "label": "N8N_POSTGRES_USER",
           "description": "...",
-          "default": ""
+          "default": "n8n-dbuser"
         },
         {
           "name": "N8N_POSTGRES_PASSWORD",
@@ -719,16 +719,16 @@
           "default": ""
         },
         {
-          "name": "N8N_POSTGRES_PASSWORD",
-          "label": "N8N_POSTGRES_PASSWORD",
+          "name": "N8N_POSTGRES_DB",
+          "label": "N8N_POSTGRES_DB",
           "description": "...",
-          "default": ""
+          "default": "n8n"
         },
         {
           "name": "N8N_POSTGRES_NON_ROOT_USER",
           "label": "N8N_POSTGRES_NON_ROOT_USER",
           "description": "...",
-          "default": ""
+          "default": "root-dbuser"
         },
         {
           "name": "N8N_POSTGRES_NON_ROOT_PASSWORD",
