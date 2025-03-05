@@ -8,6 +8,41 @@
 
 ---
 
+volumes:
+  n8n_db_storage:
+  n8n_storage:
+  n8n_redis_storage:
+
+networks:
+  default:
+    external: true
+    name: ${NETWORK_NAME}
+
+x-shared: &shared
+  restart: always
+  image: docker.n8n.io/n8nio/n8n
+  environment:
+    - DB_TYPE=postgresdb
+    - DB_POSTGRESDB_HOST=postgres
+    - DB_POSTGRESDB_PORT=5432
+    - DB_POSTGRESDB_DATABASE=${N8N_POSTGRES_DB}
+    - DB_POSTGRESDB_USER=${N8N_POSTGRES_NON_ROOT_USER}
+    - DB_POSTGRESDB_PASSWORD=${N8N_POSTGRES_NON_ROOT_PASSWORD}
+    - EXECUTIONS_MODE=queue
+    - QUEUE_BULL_REDIS_HOST=redis
+    - QUEUE_HEALTH_CHECK_ACTIVE=true
+    - N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY}
+  links:
+    - postgres
+    - redis
+  volumes:
+    - n8n_storage:/home/node/.n8n
+  depends_on:
+    redis:
+      condition: service_healthy
+    postgres:
+      condition: service_healthy
+
 services:
   postgres:
     image: postgres:16
@@ -48,38 +83,3 @@ services:
     command: worker
     depends_on:
       - n8n
-
-x-shared: &shared
-  restart: always
-  image: docker.n8n.io/n8nio/n8n
-  environment:
-    - DB_TYPE=postgresdb
-    - DB_POSTGRESDB_HOST=postgres
-    - DB_POSTGRESDB_PORT=5432
-    - DB_POSTGRESDB_DATABASE=${N8N_POSTGRES_DB}
-    - DB_POSTGRESDB_USER=${N8N_POSTGRES_NON_ROOT_USER}
-    - DB_POSTGRESDB_PASSWORD=${N8N_POSTGRES_NON_ROOT_PASSWORD}
-    - EXECUTIONS_MODE=queue
-    - QUEUE_BULL_REDIS_HOST=redis
-    - QUEUE_HEALTH_CHECK_ACTIVE=true
-    - N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY}
-  links:
-    - postgres
-    - redis
-  volumes:
-    - n8n_storage:/home/node/.n8n
-  depends_on:
-    redis:
-      condition: service_healthy
-    postgres:
-      condition: service_healthy
-
-volumes:
-  n8n_db_storage:
-  n8n_storage:
-  n8n_redis_storage:
-
-networks:
-  default:
-    external: true
-    name: ${NETWORK_NAME}
