@@ -707,6 +707,18 @@
       },
       "env": [
         {
+          "name": "N8N_PORT",
+          "label": "N8N_PORT",
+          "description": "...",
+          "default": "5678"
+        },
+        {
+          "name": "N8N_TIMEZONE",
+          "label": "N8N_TIMEZONE",
+          "description": "...",
+          "default": "Europe/Moscow"
+        },
+        {
           "name": "POSTGRES_USER",
           "label": "POSTGRES_USER",
           "description": "...",
@@ -735,12 +747,6 @@
           "label": "POSTGRES_NON_ROOT_PASSWORD",
           "description": "...",
           "default": ""
-        },
-        {
-          "name": "N8N_PORT",
-          "label": "N8N_PORT",
-          "description": "...",
-          "default": "5678"
         },
         {
           "name": "NETWORK_NAME",
