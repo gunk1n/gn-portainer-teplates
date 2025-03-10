@@ -80,7 +80,6 @@ services:
     volumes:
       - n8n_storage:/home/node/.n8n
     depends_on:
-<<<<<<< HEAD
       postgres_n8n:
         condition: service_healthy
 
@@ -92,6 +91,3 @@ networks:
   default:
     external: true
     name: ${NETWORK_NAME}
-=======
-      - n8n
->>>>>>> 0102b8f5fc86f90d79ccfbaf3b4fd594b9dc0e02
