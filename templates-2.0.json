@@ -722,13 +722,13 @@
           "name": "POSTGRES_USER",
           "label": "POSTGRES_USER",
           "description": "...",
-          "default": "n8n-dbuser"
+          "default": "postgres"
         },
         {
           "name": "POSTGRES_PASSWORD",
           "label": "POSTGRES_PASSWORD",
           "description": "..",
-          "default": ""
+          "default": "a9s8jtc67s9datjc7"
         },
         {
           "name": "POSTGRES_DB",
@@ -740,13 +740,13 @@
           "name": "POSTGRES_NON_ROOT_USER",
           "label": "POSTGRES_NON_ROOT_USER",
           "description": "...",
-          "default": "root-dbuser"
+          "default": "n8n"
         },
         {
           "name": "POSTGRES_NON_ROOT_PASSWORD",
           "label": "POSTGRES_NON_ROOT_PASSWORD",
           "description": "...",
-          "default": ""
+          "default": "ct345cy563u623w4"
         },
         {
           "name": "NETWORK_NAME",
