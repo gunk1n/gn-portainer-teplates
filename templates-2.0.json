@@ -745,7 +745,8 @@
         {
           "name": "NETWORK_NAME",
           "label": "Name of the network to which applications are connected",
-          "description": "..."
+          "description": "...",
+          "default": ""
         }
       ],
       "maintainer": "https://github.com/gunk1n/gn-portainer-teplates"
