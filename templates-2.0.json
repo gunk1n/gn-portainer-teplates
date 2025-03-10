@@ -142,8 +142,8 @@
         {
           "name": "NETWORK_NAME",
           "label": "Name of the network to which applications are connected",
-          "description": "if empty, use default 'nginx_proxy_manager'",
-          "default": "nginx_proxy_manager"
+          "description": "...",
+          "default": ""
         }
       ],
       "maintainer": "https://github.com/gunk1n/gn-portainer-teplates"
@@ -191,8 +191,8 @@
         {
           "name": "NETWORK_NAME",
           "label": "Name of the network to which applications are connected",
-          "description": "if empty, use default 'nginx_proxy_manager'",
-          "default": "nginx_proxy_manager"
+          "description": "...",
+          "default": ""
         }
       ],
       "maintainer": "https://github.com/gunk1n/gn-portainer-teplates"
@@ -353,8 +353,8 @@
         {
           "name": "NETWORK_NAME",
           "label": "Name of the network to which applications are connected",
-          "description": "if empty, use default 'nginx_proxy_manager'",
-          "default": "nginx_proxy_manager"
+          "description": "...",
+          "default": ""
         }
       ],
       "maintainer": "https://github.com/gunk1n/gn-portainer-teplates"
@@ -449,8 +449,8 @@
         {
           "name": "NETWORK_NAME",
           "label": "Name of the network to which applications are connected",
-          "description": "if empty, use default 'nginx_proxy_manager'",
-          "default": "nginx_proxy_manager"
+          "description": "...",
+          "default": ""
         }
       ],
       "maintainer": "https://github.com/gunk1n/gn-portainer-teplates"
@@ -607,8 +607,8 @@
         {
           "name": "NETWORK_NAME",
           "label": "Name of the network to which applications are connected",
-          "description": "if empty, use default 'nginx_proxy_manager'",
-          "default": "nginx_proxy_manager"
+          "description": "...",
+          "default": ""
         }
       ],
       "maintainer": "https://github.com/gunk1n/gn-portainer-teplates"
@@ -685,8 +685,8 @@
         {
           "name": "NETWORK_NAME",
           "label": "Name of the network to which applications are connected",
-          "description": "if empty, use default 'nginx_proxy_manager'",
-          "default": "nginx_proxy_manager"
+          "description": "...",
+          "default": ""
         }
       ],
       "maintainer": "https://github.com/gunk1n/gn-portainer-teplates"
@@ -707,6 +707,18 @@
       },
       "env": [
         {
+          "name": "N8N_IMAGE_VERSION",
+          "label": "N8N_IMAGE_VERSION",
+          "description": "...",
+          "default": "latest"
+        },
+        {
+          "name": "N8N_POSTGRES_IMAGE_VERSION",
+          "label": "N8N_POSTGRES_IMAGE_VERSION",
+          "description": "...",
+          "default": "16"
+        },
+        {
           "name": "N8N_POSTGRES_USER",
           "label": "N8N_POSTGRES_USER",
           "description": "...",
@@ -719,8 +731,8 @@
           "default": ""
         },
         {
-          "name": "N8N_POSTGRES_PASSWORD",
-          "label": "N8N_POSTGRES_PASSWORD",
+          "name": "N8N_POSTGRES_DB",
+          "label": "N8N_POSTGRES_DB",
           "description": "...",
           "default": ""
         },
@@ -737,12 +749,6 @@
           "default": ""
         },
         {
-          "name": "N8N_ENCRYPTION_KEY",
-          "label": "n8n",
-          "description": "...",
-          "default": ""
-        },
-        {
           "name": "N8N_PORT",
           "label": "n8n",
           "description": "...",
@@ -751,8 +757,8 @@
         {
           "name": "NETWORK_NAME",
           "label": "Name of the network to which applications are connected",
-          "description": "if empty, use default 'nginx_proxy_manager'",
-          "default": "nginx_proxy_manager"
+          "description": "...",
+          "default": ""
         }
       ],
       "maintainer": "https://github.com/gunk1n/gn-portainer-teplates"

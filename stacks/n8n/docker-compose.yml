@@ -1,16 +1,17 @@
 # 
-# ┌──────────────────────────────────────────────────────┐
-# │                                                      │
-# │                        gntwrk                        │
-# │                                                      │
-# └──────────────────────────────────────────────────────┘
+#   █▀▀ █▄░█ ▀█▀ █░█░█ █▀█ █▄▀ █▀ █▀█ ▄▀█ █▀▀ █▀▀
+#   █▄█ █░▀█ ░█░ ▀▄▀▄▀ █▀▄ █░█ ▄█ █▀▀ █▀█ █▄▄ ██▄
 # 
+# ---info--
+# https://docs.n8n.io/hosting/installation/docker/#using-with-postgresql
+# https://github.com/n8n-io/n8n-hosting/tree/main/docker-compose/withPostgres
+#
 
 ---
 
 services:
-  postgres:
-    image: postgres:16
+  postgres_n8n:
+    image: postgres:${N8N_POSTGRES_IMAGE_VERSION}
     restart: always
     environment:
       - N8N_POSTGRES_USER
@@ -19,7 +20,7 @@ services:
       - N8N_POSTGRES_NON_ROOT_USER
       - N8N_POSTGRES_NON_ROOT_PASSWORD
     volumes:
-      - db_storage:/var/lib/postgresql/data
+      - n8n_db_storage:/var/lib/postgresql/data
       - ./init-data.sh:/docker-entrypoint-initdb.d/init-data.sh
     healthcheck:
       test: ['CMD-SHELL', 'pg_isready -h localhost -U ${N8N_POSTGRES_USER} -d ${N8N_POSTGRES_DB}']
@@ -27,57 +28,29 @@ services:
       timeout: 5s
       retries: 10
 
-  redis:
-    image: redis:6-alpine
-    restart: always
-    volumes:
-      - redis_storage:/data
-    healthcheck:
-      test: ['CMD', 'redis-cli', 'ping']
-      interval: 5s
-      timeout: 5s
-      retries: 10
-
   n8n:
-    <<: *shared
+    image: docker.n8n.io/n8nio/n8n:${N8N_IMAGE_VERSION}
+    restart: always
+    environment:
+      - DB_TYPE=postgresdb
+      - DB_POSTGRESDB_HOST=postgres_n8n
+      - DB_POSTGRESDB_PORT=5432
+      - DB_POSTGRESDB_DATABASE=${N8N_POSTGRES_DB}
+      - DB_POSTGRESDB_USER=${N8N_POSTGRES_NON_ROOT_USER}
+      - DB_POSTGRESDB_PASSWORD=${N8N_POSTGRES_NON_ROOT_PASSWORD}
     ports:
       - ${N8N_PORT}:5678
-
-  n8n-worker:
-    <<: *shared
-    command: worker
+    links:
+      - postgres_n8n
+    volumes:
+      - n8n_storage:/home/node/.n8n
     depends_on:
-      - n8n
-
-x-shared: &shared
-  restart: always
-  image: docker.n8n.io/n8nio/n8n
-  environment:
-    - DB_TYPE=postgresdb
-    - DB_POSTGRESDB_HOST=postgres
-    - DB_POSTGRESDB_PORT=5432
-    - DB_POSTGRESDB_DATABASE=${N8N_POSTGRES_DB}
-    - DB_POSTGRESDB_USER=${N8N_POSTGRES_NON_ROOT_USER}
-    - DB_POSTGRESDB_PASSWORD=${N8N_POSTGRES_NON_ROOT_PASSWORD}
-    - EXECUTIONS_MODE=queue
-    - QUEUE_BULL_REDIS_HOST=redis
-    - QUEUE_HEALTH_CHECK_ACTIVE=true
-    - N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY}
-  links:
-    - postgres
-    - redis
-  volumes:
-    - n8n_storage:/home/node/.n8n
-  depends_on:
-    redis:
-      condition: service_healthy
-    postgres:
-      condition: service_healthy
+      postgres_n8n:
+        condition: service_healthy
 
 volumes:
   n8n_db_storage:
   n8n_storage:
-  n8n_redis_storage:
 
 networks:
   default:
