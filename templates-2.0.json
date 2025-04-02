@@ -701,7 +701,7 @@
       "logo": "https://avatars.githubusercontent.com/u/45487711?s=48&v=4",
       "repository": {
         "url": "https://github.com/gunk1n/gn-portainer-teplates",
-        "stackfile": "apps/n8n/docker-compose.yml"
+        "stackfile": "stacks/n8n/docker-compose.yml"
       },
       "env": [
         {
