@@ -1,0 +1,101 @@
+# 
+#   █▀▀ █▄░█ ▀█▀ █░█░█ █▀█ █▄▀ █▀ █▀█ ▄▀█ █▀▀ █▀▀
+#   █▄█ █░▀█ ░█░ ▀▄▀▄▀ █▀▄ █░█ ▄█ █▀▀ █▀█ █▄▄ ██▄
+# 
+# ---info--
+# https://hub.docker.com/r/journeycloud/journey-sync-self-hosted
+# https://github.com/Journey-Cloud/self-hosted
+# https://github.com/Journey-Cloud/self-hosted-boilerplate/blob/main/docker-compose/docker-compose.yml
+#
+
+---
+
+services:
+  journey-sync-self-hosted-service:
+    image: journeycloud/journey-sync-self-hosted
+    labels:
+      kompose.volume.size: 4Gi
+    environment:
+      EXPRESS_SERVER_PORT: ${CONTAINER_PORT} # 8899
+      REDIS_PORT: 6379
+      DISABLE_SSL: NO
+      DOMAIN: ${DOMAIN} # mydomain.com
+      ROOT_MONGO_DB_URL: mongodb://root:rpassw00rdt@journey-mongodb-service:27017
+      MONGO_DB_URL: mongodb://user:rpassw00rdt@journey-mongodb-service:27017/journey
+      REDIS_URL: redis://journey-redis-service:6379
+      FS_PATH: /mnt/data
+      SIGNED: randomalphanumeric1
+      ADMIN_JS_COOKIE_PASSWORD: randomalphanumeric2
+      TYPESENSE_HOST: journey-typesense-service
+      TYPESENSE_PORT: 8108
+      TYPESENSE_PROTOCOL: http
+      TYPESENSE_API_KEY: xyz
+    entrypoint: 'npm run launch'
+    depends_on:
+      - journey-mongodb-service
+      - journey-redis-service
+      - journey-typesense-service
+    volumes:
+      - journey-fs-volume:/mnt/data
+    ports:
+      - ${HOST_PORT}:${CONTAINER_PORT}
+  journey-sync-self-hosted-media:
+    image: journeycloud/journey-sync-self-hosted
+    labels:
+      kompose.volume.size: 4Gi
+    environment:
+      REDIS_PORT: 6379
+      DISABLE_SSL: NO
+      DOMAIN: ${DOMAIN} # mydomain.com
+      ROOT_MONGO_DB_URL: mongodb://root:rpassw00rdt@journey-mongodb-service:27017
+      MONGO_DB_URL: mongodb://user:rpassw00rdt@journey-mongodb-service:27017/journey
+      REDIS_URL: redis://journey-redis-service:6379
+      FS_PATH: /mnt/data
+    entrypoint: 'npm run launchMedia'
+    depends_on:
+      - journey-sync-self-hosted-service
+    volumes:
+      - journey-fs-volume:/mnt/data
+  journey-mongodb-service:
+    image: mongo:7.0
+    labels:
+      kompose.volume.size: 4Gi
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rpassw00rdt
+      MONGO_INITDB_DATABASE: journey
+    volumes:
+      - journey-mongodb-volume:/data/db
+  journey-redis-service:
+    image: redis:7.2.4-alpine
+    labels:
+      kompose.volume.size: 4Gi
+    volumes:
+      - journey-redis-volume:/data
+    command: redis-server
+  journey-typesense-service:
+    image: typesense/typesense:26.0
+    labels:
+      kompose.volume.size: 10Gi
+    volumes:
+      - journey-typesense-volume:/data
+    command: '--data-dir /data --api-key=xyz --enable-cors'
+
+volumes:
+  journey-mongodb-volume:
+    labels:
+      kompose.volume.size: 10Gi
+  journey-typesense-volume:
+    labels:
+      kompose.volume.size: 10Gi
+  journey-fs-volume:
+    labels:
+      kompose.volume.size: 20Gi
+  journey-redis-volume:
+    labels:
+      kompose.volume.size: 4Gi
+
+networks:
+  default:
+    external: true
+    name: ${NETWORK_NAME}

@@ -774,6 +774,45 @@
           "default": ""
         }
       ]
+    },
+    {
+      "type": 3,
+      "title": "Journey-Cloud",
+      "description": "Journey Cloud Sync Self-Hosted Boilerplates. ",
+      "note": "https://github.com/Journey-Cloud/self-hosted-boilerplate/tree/main/docker-compose",
+      "categories": ["Cloud", "Sync"],
+      "platform": "linux",
+      "logo": "https://avatars.githubusercontent.com/u/168413575?s=48&v=4",
+      "repository": {
+        "url": "https://github.com/gunk1n/gn-portainer-teplates",
+        "stackfile": "stacks/journey-cloud/docker-compose.yml"
+      },
+      "env": [
+        {
+          "name": "DOMAIN",
+          "label": "DOMAIN",
+          "description": "...",
+          "default": "mydomain.com"
+        },
+        {
+          "name": "CONTAINER_PORT",
+          "label": "CONTAINER_PORT",
+          "description": "...",
+          "default": "8899"
+        },
+        {
+          "name": "HOST_PORT",
+          "label": "HOST_PORT",
+          "description": "...",
+          "default": "9988"
+        },
+        {
+          "name": "NETWORK_NAME",
+          "label": "Name of the network to which applications are connected",
+          "description": "...",
+          "default": ""
+        }
+      ]
     }
   ]
 }
