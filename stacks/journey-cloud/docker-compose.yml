@@ -13,6 +13,7 @@
 services:
   journey-sync-self-hosted-service:
     image: journeycloud/journey-sync-self-hosted
+    container_name: journey-sync-self-hosted-service
     labels:
       kompose.volume.size: 4Gi
     environment:
@@ -41,6 +42,7 @@ services:
       - ${HOST_PORT}:${CONTAINER_PORT}
   journey-sync-self-hosted-media:
     image: journeycloud/journey-sync-self-hosted
+    container_name: journey-sync-self-hosted-media
     labels:
       kompose.volume.size: 4Gi
     environment:
@@ -58,6 +60,7 @@ services:
       - journey-fs-volume:/mnt/data
   journey-mongodb-service:
     image: mongo:7.0
+    container_name: journey-mongodb-service
     labels:
       kompose.volume.size: 4Gi
     environment:
@@ -68,6 +71,7 @@ services:
       - journey-mongodb-volume:/data/db
   journey-redis-service:
     image: redis:7.2.4-alpine
+    container_name: journey-redis-service
     labels:
       kompose.volume.size: 4Gi
     volumes:
@@ -75,6 +79,7 @@ services:
     command: redis-server
   journey-typesense-service:
     image: typesense/typesense:26.0
+    container_name: journey-typesense-service
     labels:
       kompose.volume.size: 10Gi
     volumes:
