@@ -1,0 +1,33 @@
+# 
+#   █▀▀ █▄░█ ▀█▀ █░█░█ █▀█ █▄▀ █▀ █▀█ ▄▀█ █▀▀ █▀▀
+#   █▄█ █░▀█ ░█░ ▀▄▀▄▀ █▀▄ █░█ ▄█ █▀▀ █▀█ █▄▄ ██▄
+# 
+# ---info--
+# created by - https://github.com/jesseduffield/lazydocker/blob/master/docker-compose.yml
+#
+
+---
+
+services:
+  lazydocker:
+    build:
+      context: https://github.com/jesseduffield/lazydocker.git
+      args:
+        BASE_IMAGE_BUILDER: golang
+        GOARCH: amd64
+        GOARM:
+    image: lazyteam/lazydocker
+    container_name: lazydocker
+    stdin_open: true
+    tty: true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - lazydocker_config:/.config/jesseduffield/lazydocker
+
+volumes:
+  lazydocker_config:
+
+networks:
+  default:
+    external: true
+    name: ${NETWORK_NAME}

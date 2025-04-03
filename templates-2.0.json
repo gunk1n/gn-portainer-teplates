@@ -753,6 +753,27 @@
           "default": ""
         }
       ]
+    },
+    {
+      "type": 3,
+      "title": "LazyDocker :: Manage Docker Cli",
+      "description": "The lazier way to manage everything docker.",
+      "note": "https://github.com/jesseduffield/lazydocker#docker",
+      "categories": ["Docker", "DevOps", "Manage"],
+      "platform": "linux",
+      "logo": "https://user-images.githubusercontent.com/8456633/59972109-8e9c8480-95cc-11e9-8350-38f7f86ba76d.png",
+      "repository": {
+        "url": "https://github.com/gunk1n/gn-portainer-teplates",
+        "stackfile": "stacks/lazydocker/docker-compose.yml"
+      },
+      "env": [
+        {
+          "name": "NETWORK_NAME",
+          "label": "Name of the network to which applications are connected",
+          "description": "...",
+          "default": ""
+        }
+      ]
     }
   ]
 }
