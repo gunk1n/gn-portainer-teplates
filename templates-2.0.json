@@ -813,6 +813,69 @@
           "default": ""
         }
       ]
+    },
+    {
+      "type": 3,
+      "title": "NextCloud",
+      "description": "A safe home for all your data – community-driven, free & open source.",
+      "note": "https://hub.docker.com/_/nextcloud | https://github.com/docker-library/docs/tree/master/nextcloud#base-version---apache",
+      "categories": ["Cloud", "Sync", "NAS"],
+      "platform": "linux",
+      "logo": "https://avatars.githubusercontent.com/u/19211038?s=48&v=4",
+      "repository": {
+        "url": "https://github.com/gunk1n/gn-portainer-teplates",
+        "stackfile": "stacks/nextcloud/docker-compose.yml"
+      },
+      "env": [
+        {
+          "name": "NC_CONTAINER_PORT",
+          "label": "NC_CONTAINER_PORT",
+          "description": "...",
+          "default": "80"
+        },
+        {
+          "name": "NC_HOST_PORT",
+          "label": "NC_HOST_PORT",
+          "description": "...",
+          "default": "8182"
+        },
+        {
+          "name": "NC_MYSQL_ROOT_PASSWORD",
+          "label": "NC_MYSQL_ROOT_PASSWORD",
+          "description": "...",
+          "default": "rd87hU27uJid"
+        },
+        {
+          "name": "NC_MYSQL_DATABASE",
+          "label": "NC_MYSQL_DATABASE",
+          "description": "...",
+          "default": "nextcloud"
+        },
+        {
+          "name": "NC_MYSQL_USER",
+          "label": "NC_MYSQL_USER",
+          "description": "...",
+          "default": "nextcloud"
+        },
+        {
+          "name": "NC_MYSQL_PASSWORD",
+          "label": "NC_MYSQL_PASSWORD",
+          "description": "...",
+          "default": "hD689Sd65d9"
+        },
+        {
+          "name": "NC_MYSQL_HOST",
+          "label": "NC_MYSQL_HOST",
+          "description": "...",
+          "default": "nextcloud-db"
+        },
+        {
+          "name": "NETWORK_NAME",
+          "label": "Name of the network to which applications are connected",
+          "description": "...",
+          "default": ""
+        }
+      ]
     }
   ]
 }

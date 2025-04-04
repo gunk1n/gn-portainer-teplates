@@ -1,0 +1,48 @@
+# 
+#   █▀▀ █▄░█ ▀█▀ █░█░█ █▀█ █▄▀ █▀ █▀█ ▄▀█ █▀▀ █▀▀
+#   █▄█ █░▀█ ░█░ ▀▄▀▄▀ █▀▄ █░█ ▄█ █▀▀ █▀█ █▄▄ ██▄
+# 
+# ---info--
+# https://github.com/docker-library/docs/tree/master/nextcloud#base-version---apache
+#
+
+---
+
+services:
+  nextcloud-db:
+    image: mariadb:10.6
+    container_name: nextcloud-db
+    restart: always
+    command: --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=ROW
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${NC_MYSQL_ROOT_PASSWORD}
+      - MYSQL_PASSWORD=${NC_MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${NC_MYSQL_DATABASE}
+      - MYSQL_USER=${NC_MYSQL_USER}
+
+  nextcloud-app:
+    image: nextcloud
+    container_name: nextcloud-app
+    restart: always
+    ports:
+      - ${NC_HOST_PORT}:${NC_CONTAINER_PORT}
+    links:
+      - nextcloud-db
+    volumes:
+      - app_data:/var/www/html
+    environment:
+      - MYSQL_PASSWORD=${NC_MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${NC_MYSQL_DATABASE}
+      - MYSQL_USER=${NC_MYSQL_USER}
+      - MYSQL_HOST=${NC_MYSQL_HOST}
+
+volumes:
+  app_data:
+  db_data:
+
+networks:
+  default:
+    external: true
+    name: ${NETWORK_NAME}
