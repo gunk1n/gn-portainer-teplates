@@ -876,6 +876,69 @@
           "default": ""
         }
       ]
+    },
+    {
+      "type": 3,
+      "title": "IPTables Web-UI",
+      "description": "Web-based manager for Iptables rules.",
+      "note": "https://github.com/1RandomDev/iptables-web-ui",
+      "categories": ["Firewall", "DevOps", "Iptables"],
+      "platform": "linux",
+      "logo": "https://avatars.githubusercontent.com/u/84292805?s=48&v=4",
+      "repository": {
+        "url": "https://github.com/gunk1n/gn-portainer-teplates",
+        "stackfile": "stacks/iptables-web-ui/docker-compose.yml"
+      },
+      "env": [
+        {
+          "name": "DEFAULT_CHAIN",
+          "label": "DEFAULT_CHAIN",
+          "description": "Chain that is selected when you open the interface. Format: <ipv6 true/false>-<table>-<chain>",
+          "default": "false-filter-INPUT"
+        },
+        {
+          "name": "FLUSH_ON_RESTORE",
+          "label": "FLUSH_ON_RESTORE",
+          "description": "Clear all rules and chains on restore. This is the default behavior of iptables-restore, usually this should not be changed. Can be used to only save and restore selected tables to prevent messing up automatically generated chains like the ones from docker or libvirt (required additional steps when first loading the rules).",
+          "default": "true"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "description": "TimeZone",
+          "default": "Europe/Moscow"
+        },
+        {
+          "name": "WEBUI_HOST",
+          "label": "WEBUI_HOST",
+          "description": "Ip address the web interface listens on.",
+          "default": "all"
+        },
+        {
+          "name": "WEBUI_PORT",
+          "label": "WEBUI_PORT",
+          "description": "Port the web interface listens on.",
+          "default": "8585"
+        },
+        {
+          "name": "WEBUI_PASSWORD",
+          "label": "WEBUI_PASSWORD",
+          "description": "Super secret web interface password.",
+          "default": ""
+        },
+        {
+          "name": "DATA_DIRECTORY",
+          "label": "DATA_DIRECTORY",
+          "description": "Path for saving keys and user configurations.",
+          "default": "/app/data"
+        },
+        {
+          "name": "DEBUG_MODE",
+          "label": "DEBUG_MODE",
+          "description": "Print executed iptables commands for debug purposes.",
+          "default": "false"
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,39 @@
+# 
+#   █▀▀ █▄░█ ▀█▀ █░█░█ █▀█ █▄▀ █▀ █▀█ ▄▀█ █▀▀ █▀▀
+#   █▄█ █░▀█ ░█░ ▀▄▀▄▀ █▀▄ █░█ ▄█ █▀▀ █▀█ █▄▄ ██▄
+# 
+# ---info--
+# https://github.com/1RandomDev/iptables-web-ui
+#
+
+---
+
+services:
+  iptables-web-ui:
+    image: ghcr.io/1randomdev/iptables-web-ui:latest
+    container_name: iptables-web-ui
+    restart: unless-stopped
+    network_mode: host
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    environment:
+      - TZ=${TZ}
+      - DEFAULT_CHAIN=${DEFAULT_CHAIN}
+      - FLUSH_ON_RESTORE=${FLUSH_ON_RESTORE}
+      - WEBUI_HOST=${WEBUI_HOST}
+      - WEBUI_PORT=${WEBUI_PORT}
+      - WEBUI_PASSWORD=${WEBUI_PASSWORD}
+      - DATA_DIRECTORY=${DATA_DIRECTORY}
+      - DEBUG_MODE=${DEBUG_MODE}
+    volumes:
+      - cfg_data:/app/data
+      - /etc/iptables:/etc/iptables # Optional, necessary for saving lists for iptables-persistent
+
+volumes:
+  cfg_data:
+
+# networks:
+#   default:
+#     external: true
+#     name: ${NETWORK_NAME}
