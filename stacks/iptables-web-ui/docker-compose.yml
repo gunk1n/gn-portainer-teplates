@@ -5,6 +5,17 @@
 # ---info--
 # https://github.com/1RandomDev/iptables-web-ui
 #
+docker run -d
+    --cap-add=NET_ADMIN \
+    --cap-add=SYS_MODULE \
+    --name=iptables-web-ui \
+    --network=host \
+    -v data:/app/data \
+    -v /etc/iptables:/etc/iptables \
+    -e TZ=Europe/Moscow \
+    -e WEBUI_PASSWORD=qaz2WSX \
+    ghcr.io/1randomdev/iptables-web-ui:latest
+#
 
 ---
 
