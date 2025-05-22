@@ -27,7 +27,7 @@ services:
     network_mode: host
     cap_add:
       - NET_ADMIN
-      - SYS_MODULE
+#      - SYS_MODULE
     environment:
       - TZ=${TZ}
       - DEFAULT_CHAIN=${DEFAULT_CHAIN}
@@ -38,11 +38,11 @@ services:
       - DATA_DIRECTORY=${DATA_DIRECTORY}
       - DEBUG_MODE=${DEBUG_MODE}
     volumes:
-      - cfg_data:/app/data
+      - iwu_data:/app/data
       - /etc/iptables:/etc/iptables # Optional, necessary for saving lists for iptables-persistent
 
 volumes:
-  cfg_data:
+  iwu_data:
 
 # networks:
 #   default:

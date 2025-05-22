@@ -924,7 +924,7 @@
           "name": "WEBUI_PASSWORD",
           "label": "WEBUI_PASSWORD",
           "description": "Super secret web interface password.",
-          "default": ""
+          "default": "qaz2WSX"
         },
         {
           "name": "DATA_DIRECTORY",
