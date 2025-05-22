@@ -24,19 +24,21 @@ services:
     image: ghcr.io/1randomdev/iptables-web-ui:latest
     container_name: iptables-web-ui
     restart: unless-stopped
-    network_mode: host
+#    network_mode: host
+    ports:
+      - 8585:8585
     cap_add:
       - NET_ADMIN
-#      - SYS_MODULE
+      - SYS_MODULE
     environment:
       - TZ=${TZ}
-      - DEFAULT_CHAIN=${DEFAULT_CHAIN}
-      - FLUSH_ON_RESTORE=${FLUSH_ON_RESTORE}
-      - WEBUI_HOST=${WEBUI_HOST}
-      - WEBUI_PORT=${WEBUI_PORT}
       - WEBUI_PASSWORD=${WEBUI_PASSWORD}
-      - DATA_DIRECTORY=${DATA_DIRECTORY}
-      - DEBUG_MODE=${DEBUG_MODE}
+#      - DEFAULT_CHAIN=${DEFAULT_CHAIN}
+#      - FLUSH_ON_RESTORE=${FLUSH_ON_RESTORE}
+#      - WEBUI_HOST=${WEBUI_HOST}
+#      - WEBUI_PORT=${WEBUI_PORT}
+#      - DATA_DIRECTORY=${DATA_DIRECTORY}
+#      - DEBUG_MODE=${DEBUG_MODE}
     volumes:
       - iwu_data:/app/data
       - /etc/iptables:/etc/iptables # Optional, necessary for saving lists for iptables-persistent
@@ -44,7 +46,7 @@ services:
 volumes:
   iwu_data:
 
-# networks:
-#   default:
-#     external: true
-#     name: ${NETWORK_NAME}
+networks:
+  default:
+    external: true
+    name: ${NETWORK_NAME}
